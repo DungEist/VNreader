@@ -1,22 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Safe access to import.meta.env to prevent runtime crashes if env is undefined
-const meta = import.meta as any;
-const env = meta && meta.env ? meta.env : {};
+// Lấy biến môi trường
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
-const supabaseUrl = env.VITE_SUPABASE_URL;
-const supabaseKey = env.VITE_SUPABASE_ANON_KEY;
+// Kiểm tra xem biến có tồn tại không
+const isConfigured = supabaseUrl && supabaseKey && supabaseUrl.startsWith('http');
 
-// Check if credentials exist
-export const isSupabaseConfigured = !!(supabaseUrl && supabaseKey);
-
-if (!isSupabaseConfigured) {
-  console.warn("Chưa cấu hình VITE_SUPABASE_URL hoặc VITE_SUPABASE_ANON_KEY. Vui lòng kiểm tra file .env");
+if (!isConfigured) {
+    console.warn("⚠️ CẢNH BÁO: Chưa cấu hình VITE_SUPABASE_URL hoặc VITE_SUPABASE_KEY. Web sẽ chạy chế độ Offline (không lưu được).");
 }
 
-// Initialize Supabase client
-// Use placeholder strings to prevent createClient from crashing immediately if env vars are missing
-export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co', 
-  supabaseKey || 'placeholder-key'
-);
+// Nếu có cấu hình thì tạo client, nếu không thì trả về null (để không crash app)
+export const supabase = isConfigured 
+    ? createClient(supabaseUrl, supabaseKey) 
+    : null;
