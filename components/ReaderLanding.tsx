@@ -281,7 +281,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-2 opacity-30">
                   <BookText size={16} />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">VN Reader Pro</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">VN Reader</span>
               </div>
               <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest text-center md:text-left">
                   © 2025 Developed for the ultimate visual novel experience.
