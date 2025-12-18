@@ -73,7 +73,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
               <BookText size={20} className="text-white" />
            </div>
            <div>
-              <h1 className="text-xl font-bold tracking-tight">VN Reader Pro</h1>
+              <h1 className="text-xl font-bold tracking-tight">VN Reader</h1>
               <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Premium Reading Experience</p>
            </div>
         </div>
@@ -98,7 +98,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
            <section className="animate-in fade-in slide-in-from-top-4 duration-700">
                <div className="flex items-center justify-between mb-4">
                   <h2 className="text-sm font-black text-gray-500 uppercase tracking-[0.2em] flex items-center gap-2">
-                     <RotateCcw size={16} className="text-blue-500" /> Tiếp tục hành trình
+                     <RotateCcw size={16} className="text-blue-500" /> Tiếp tục đọc
                   </h2>
                </div>
                <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-blue-900/20 border border-white/10 rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-8 shadow-2xl relative overflow-hidden group">
@@ -284,7 +284,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">VN Reader Pro</span>
               </div>
               <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest text-center md:text-left">
-                  © 2024 Developed for the ultimate visual novel experience.
+                  © 2025 Developed for the ultimate visual novel experience.
               </p>
               <div className="flex gap-8 text-[10px] font-black text-gray-500 uppercase tracking-widest">
                   <a 
