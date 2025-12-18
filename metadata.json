@@ -1,5 +1,5 @@
 {
-  "name": "VN Reader",
+  "name": "VN console ",
   "description": "Bảng điều khiển quản trị Visual Novel. Bao gồm Editor, Graph Viewer và Web Reader Controller.",
   "requestFramePermissions": []
 }

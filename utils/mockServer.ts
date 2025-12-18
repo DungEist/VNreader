@@ -1,10 +1,12 @@
-import { Story } from '../types';
-import { supabase } from './supabaseClient'; // Import cái biến supabase (có thể null)
+
+import { Story, AppConfig } from '../types';
+import { supabase, isSupabaseConfigured } from './supabaseClient';
+
+// --- SUPABASE API IMPLEMENTATION ---
 
 export const serverFetchAllStories = async (): Promise<Story[]> => {
-    // 🛑 CHẶN LỖI: Nếu chưa kết nối Supabase thì dừng luôn, không gọi lệnh để tránh crash
-    if (!supabase) {
-        console.error("Lỗi: Supabase chưa được khởi tạo (Thiếu Env Vars).");
+    if (!isSupabaseConfigured) {
+        console.warn("Supabase chưa được cấu hình. Trả về danh sách rỗng.");
         return [];
     }
 
@@ -12,11 +14,12 @@ export const serverFetchAllStories = async (): Promise<Story[]> => {
         const { data, error } = await supabase
             .from('stories')
             .select('*')
+            .neq('id', 'global_app_config') // Loại bỏ config ra khỏi danh sách truyện
             .order('updated_at', { ascending: false });
 
         if (error) {
-            console.error("Supabase Fetch Error:", error);
-            return [];
+            console.error("Supabase Fetch Error:", JSON.stringify(error, null, 2));
+            throw error;
         }
 
         return (data || []).map((row: any) => {
@@ -31,15 +34,14 @@ export const serverFetchAllStories = async (): Promise<Story[]> => {
             } as Story;
         });
     } catch (e) {
-        console.error("System Error:", e);
+        console.error("Error fetching stories:", e);
         return [];
     }
 };
 
 export const serverSaveStory = async (story: Story): Promise<boolean> => {
-    // 🛑 CHẶN LỖI
-    if (!supabase) {
-        alert("Lỗi cấu hình: Chưa kết nối được Supabase (Kiểm tra biến môi trường VITE_...)");
+    if (!isSupabaseConfigured) {
+        alert("Chưa cấu hình Supabase! Không thể lưu lên server.");
         return false;
     }
 
@@ -55,11 +57,12 @@ export const serverSaveStory = async (story: Story): Promise<boolean> => {
             updated_at: new Date().toISOString()
         };
 
-        const { error } = await supabase.from('stories').upsert(payload, { onConflict: 'id' });
+        const { error } = await supabase
+            .from('stories')
+            .upsert(payload, { onConflict: 'id' });
 
         if (error) {
-            console.error("Supabase Save Error:", error);
-            alert("Lỗi lưu: " + error.message);
+            console.error("Supabase Save Error:", JSON.stringify(error, null, 2));
             return false;
         }
         return true;
@@ -70,9 +73,69 @@ export const serverSaveStory = async (story: Story): Promise<boolean> => {
 };
 
 export const serverDeleteStory = async (storyId: string): Promise<boolean> => {
-    if (!supabase) return false;
+    if (!isSupabaseConfigured) {
+        alert("Chưa cấu hình Supabase! Không thể xóa.");
+        return false;
+    }
+
     try {
-        const { error } = await supabase.from('stories').delete().eq('id', storyId);
-        return !error;
-    } catch { return false; }
+        const { error } = await supabase
+            .from('stories')
+            .delete()
+            .eq('id', storyId);
+
+        if (error) {
+            console.error("Supabase Delete Error:", JSON.stringify(error, null, 2));
+            return false;
+        }
+        return true;
+    } catch (e) {
+        console.error("Error deleting story:", e);
+        return false;
+    }
+};
+
+// --- GLOBAL CONFIG HANDLING ---
+
+export const DEFAULT_APP_CONFIG: AppConfig = {
+  bugReportUrl: 'https://www.facebook.com/ningbasementofficial',
+  fbUrl: 'https://www.facebook.com/ningbasementofficial',
+  xUrl: 'https://x.com/Dung_Eist',
+  mailUrl: 'mailto:ningsbasement@gmail.com',
+  donateImageUrl: 'https://media.discordapp.net/attachments/1097907253211836523/1450504491333058680/image.png?ex=69441893&is=6942c713&hm=3720f56eadf7aec0ce5b34157662b565a362181890f57a14a6ff945d6b8c41ed&=&format=webp&quality=lossless&width=1184&height=666'
+};
+
+export const serverFetchConfig = async (): Promise<AppConfig> => {
+  if (!isSupabaseConfigured) return DEFAULT_APP_CONFIG;
+  try {
+    const { data, error } = await supabase
+      .from('stories')
+      .select('data')
+      .eq('id', 'global_app_config')
+      .single();
+
+    if (error || !data) return DEFAULT_APP_CONFIG;
+    return data.data as AppConfig;
+  } catch (e) {
+    return DEFAULT_APP_CONFIG;
+  }
+};
+
+export const serverSaveConfig = async (config: AppConfig): Promise<boolean> => {
+  if (!isSupabaseConfigured) return false;
+  try {
+    const payload = {
+      id: 'global_app_config',
+      title: 'Global App Config',
+      data: config,
+      updated_at: new Date().toISOString()
+    };
+    const { error } = await supabase
+      .from('stories')
+      .upsert(payload, { onConflict: 'id' });
+    
+    return !error;
+  } catch (e) {
+    return false;
+  }
 };

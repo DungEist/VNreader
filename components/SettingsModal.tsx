@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { X, Type, Monitor, Volume2, Music, Mic, Zap, LayoutTemplate, ScrollText } from 'lucide-react';
+import { X, Type, Monitor, Volume2, Music, Mic, Zap, LayoutTemplate, ScrollText, Check } from 'lucide-react';
 import { ReaderSettings } from '../types';
 
 interface SettingsModalProps {
@@ -9,6 +10,13 @@ interface SettingsModalProps {
   onUpdateSettings: (newSettings: ReaderSettings) => void;
 }
 
+const fontSizeMap: Record<string, string> = {
+  small: '12px',
+  medium: '14px',
+  large: '18px',
+  xlarge: '22px'
+};
+
 const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, settings, onUpdateSettings }) => {
   if (!isOpen) return null;
 
@@ -16,191 +24,107 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, settings
     onUpdateSettings({ ...settings, [key]: value });
   };
 
+  const fontOptions = [
+    { id: 'sans', name: 'Sans', class: 'font-sans' },
+    { id: 'serif', name: 'Serif', class: 'font-serif' },
+    { id: 'mono', name: 'Mono', class: 'font-mono' }
+  ];
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="bg-gray-900 border border-gray-700 w-full max-w-md rounded-lg shadow-2xl p-6 relative animate-in fade-in zoom-in duration-200 overflow-y-auto max-h-[90vh]">
-        <button 
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-        >
-          <X size={24} />
-        </button>
-        
-        <h2 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-          <Monitor size={24} className="text-blue-500" /> Cài đặt
-        </h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+      <div className="bg-[#121212] border border-white/10 w-full max-w-sm rounded-2xl shadow-2xl flex flex-col relative animate-in fade-in zoom-in duration-200 overflow-hidden max-h-[95vh]">
+        <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
+           <h2 className="text-base font-bold text-white flex items-center gap-2">
+            <Monitor size={18} className="text-blue-500" /> Cấu hình
+          </h2>
+          <button onClick={onClose} className="p-1.5 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white"><X size={18} /></button>
+        </div>
 
-        <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto p-4 space-y-5 custom-scrollbar">
           {/* Audio Settings */}
-          <div className="space-y-4">
-             <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Âm thanh</h3>
-             
-             <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                  <Music size={16} /> Nhạc nền (BGM)
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={settings.bgmVolume}
-                  onChange={(e) => handleChange('bgmVolume', parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-500"
-                />
-             </div>
-
-             <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                  <Volume2 size={16} /> Hiệu ứng (SFX)
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={settings.sfxVolume}
-                  onChange={(e) => handleChange('sfxVolume', parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-500"
-                />
-             </div>
-
-             <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                  <Mic size={16} /> Lồng tiếng (Voice)
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={settings.voiceVolume}
-                  onChange={(e) => handleChange('voiceVolume', parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-500"
-                />
+          <div className="space-y-3">
+             <h3 className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Âm lượng</h3>
+             <div className="grid grid-cols-1 gap-3">
+                {[
+                  { key: 'bgmVolume', icon: <Music size={12}/>, label: 'BGM' },
+                  { key: 'sfxVolume', icon: <Volume2 size={12}/>, label: 'SFX' },
+                  { key: 'voiceVolume', icon: <Mic size={12}/>, label: 'Voice' }
+                ].map((item) => (
+                  <div key={item.key}>
+                    <div className="flex justify-between items-center mb-1">
+                      <label className="text-[11px] font-bold text-gray-300 flex items-center gap-2">{item.icon} {item.label}</label>
+                      <span className="text-[9px] font-mono text-blue-500">{Math.round((settings as any)[item.key] * 100)}%</span>
+                    </div>
+                    <input
+                      type="range" min="0" max="1" step="0.05"
+                      value={(settings as any)[item.key]}
+                      onChange={(e) => handleChange(item.key as any, parseFloat(e.target.value))}
+                      className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                    />
+                  </div>
+                ))}
              </div>
           </div>
 
-          <hr className="border-gray-800" />
-
-          {/* Display Settings */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Hiển thị & Tự động</h3>
-
-            {/* Display Mode Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Chế độ đọc</label>
-              <div className="grid grid-cols-2 gap-3">
-                 <button 
-                    onClick={() => handleChange('displayMode', 'vn')}
-                    className={`flex items-center justify-center gap-2 p-3 rounded-lg border transition-all ${settings.displayMode === 'vn' ? 'bg-blue-600/20 border-blue-500 text-blue-400' : 'bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700'}`}
-                 >
-                    <LayoutTemplate size={18} /> VN Classic
-                 </button>
-                 <button 
-                    onClick={() => handleChange('displayMode', 'scroll')}
-                    className={`flex items-center justify-center gap-2 p-3 rounded-lg border transition-all ${settings.displayMode === 'scroll' ? 'bg-blue-600/20 border-blue-500 text-blue-400' : 'bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700'}`}
-                 >
-                    <ScrollText size={18} /> Scroll Mode
-                 </button>
-              </div>
-            </div>
+          {/* Typography & Mode */}
+          <div className="space-y-3 pt-2">
+            <h3 className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Hiển thị</h3>
             
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                <Type size={16} /> Cỡ chữ
-              </label>
-              <div className="grid grid-cols-4 gap-2">
-                {['small', 'medium', 'large', 'xlarge'].map((size) => (
+            <div className="grid grid-cols-2 gap-2">
+              <button 
+                onClick={() => handleChange('displayMode', 'vn')}
+                className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg border text-[11px] font-bold transition-all ${settings.displayMode === 'vn' ? 'bg-blue-600 border-blue-500 text-white' : 'bg-gray-900 border-white/5 text-gray-500'}`}
+              >
+                <LayoutTemplate size={14} /> VN Classic
+              </button>
+              <button 
+                onClick={() => handleChange('displayMode', 'scroll')}
+                className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg border text-[11px] font-bold transition-all ${settings.displayMode === 'scroll' ? 'bg-blue-600 border-blue-500 text-white' : 'bg-gray-900 border-white/5 text-gray-500'}`}
+              >
+                <ScrollText size={14} /> Scroll
+              </button>
+            </div>
+
+            <div className="grid grid-cols-3 gap-1.5">
+              {fontOptions.map(font => (
+                <button 
+                  key={font.id}
+                  onClick={() => handleChange('fontFamily', font.id as any)}
+                  className={`flex items-center justify-center py-2 rounded-lg border text-[11px] transition-all ${settings.fontFamily === font.id ? 'bg-white/5 border-blue-500/50 text-blue-400 font-bold' : 'bg-gray-900 border-white/5 text-gray-500'}`}
+                >
+                  <span className={font.class}>{font.name}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-4 gap-1.5">
+              {['S', 'M', 'L', 'XL'].map((size, idx) => {
+                const sizeValue = ['small', 'medium', 'large', 'xlarge'][idx];
+                return (
                   <button
-                    key={size}
-                    onClick={() => handleChange('fontSize', size as any)}
-                    className={`px-3 py-2 rounded border text-sm capitalize transition-all ${
-                      settings.fontSize === size 
-                        ? 'bg-blue-600 border-blue-500 text-white' 
-                        : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700'
+                    key={sizeValue}
+                    onClick={() => handleChange('fontSize', sizeValue as any)}
+                    className={`py-2 rounded-lg border text-[10px] font-black transition-all ${
+                      settings.fontSize === sizeValue ? 'bg-blue-600 border-blue-500 text-white' : 'bg-gray-900 border-white/5 text-gray-500'
                     }`}
                   >
-                    {size === 'xlarge' ? 'XL' : size}
+                    {size}
                   </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Kiểu chữ</label>
-              <div className="grid grid-cols-3 gap-2">
-                <button
-                  onClick={() => handleChange('fontFamily', 'sans')}
-                  className={`px-3 py-2 rounded border font-sans ${
-                    settings.fontFamily === 'sans' ? 'bg-blue-600 border-blue-500' : 'bg-gray-800 border-gray-700'
-                  }`}
-                >
-                  Sans
-                </button>
-                <button
-                  onClick={() => handleChange('fontFamily', 'serif')}
-                  className={`px-3 py-2 rounded border font-serif ${
-                    settings.fontFamily === 'serif' ? 'bg-blue-600 border-blue-500' : 'bg-gray-800 border-gray-700'
-                  }`}
-                >
-                  Serif
-                </button>
-                <button
-                  onClick={() => handleChange('fontFamily', 'mono')}
-                  className={`px-3 py-2 rounded border font-mono ${
-                    settings.fontFamily === 'mono' ? 'bg-blue-600 border-blue-500' : 'bg-gray-800 border-gray-700'
-                  }`}
-                >
-                  Mono
-                </button>
-              </div>
-            </div>
-
-            <div>
-               <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                  <Zap size={16} /> Tốc độ Auto Play: {settings.autoPlaySpeed / 1000}s
-               </label>
-               <input
-                  type="range"
-                  min="500"
-                  max="5000"
-                  step="500"
-                  value={settings.autoPlaySpeed}
-                  onChange={(e) => handleChange('autoPlaySpeed', parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
-                />
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
-                  <span>Nhanh (0.5s)</span>
-                  <span>Chậm (5s)</span>
-                </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Độ đậm nền văn bản</label>
-              <input
-                type="range"
-                min="0.2"
-                max="1"
-                step="0.1"
-                value={settings.overlayOpacity}
-                onChange={(e) => handleChange('overlayOpacity', parseFloat(e.target.value))}
-                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
-              />
+                );
+              })}
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-4 border-t border-gray-800">
+        <div className="p-4 bg-black/40 border-t border-white/5">
            <div 
-             className="p-4 rounded-lg text-white transition-all duration-300"
+             className="p-3 rounded-xl text-gray-100 shadow-inner border border-white/5 leading-snug line-clamp-2 italic opacity-60 text-center transition-all duration-300"
              style={{
-               backgroundColor: `rgba(0, 0, 0, ${settings.overlayOpacity})`,
                fontFamily: settings.fontFamily === 'serif' ? 'Merriweather, serif' : settings.fontFamily === 'mono' ? 'Fira Code, monospace' : 'Roboto, sans-serif',
-               fontSize: settings.fontSize === 'small' ? '14px' : settings.fontSize === 'medium' ? '16px' : settings.fontSize === 'large' ? '20px' : '24px',
+               fontSize: fontSizeMap[settings.fontSize] || '14px',
              }}
            >
-             Đây là văn bản xem trước.
+             "Dòng xem trước giao diện người đọc..."
            </div>
         </div>
       </div>

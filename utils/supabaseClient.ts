@@ -1,17 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Lấy biến môi trường
+// --- SỬA ĐỔI: Gọi trực tiếp import.meta.env để Vite nhận diện static replacement ---
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// Kiểm tra xem biến có tồn tại không
-const isConfigured = supabaseUrl && supabaseKey && supabaseUrl.startsWith('http');
+// Kiểm tra cấu hình
+export const isSupabaseConfigured = !!(supabaseUrl && supabaseKey);
 
-if (!isConfigured) {
-    console.warn("⚠️ CẢNH BÁO: Chưa cấu hình VITE_SUPABASE_URL hoặc VITE_SUPABASE_KEY. Web sẽ chạy chế độ Offline (không lưu được).");
+if (!isSupabaseConfigured) {
+  console.warn("SUPABASE_CONFIG_MISSING: Vui lòng thiết lập VITE_SUPABASE_URL và VITE_SUPABASE_ANON_KEY trong Environment Variables.");
+  // Log ra để debug xem nó đang nhận là gì (ẩn bớt ký tự nếu cần)
+  console.log("Current URL:", supabaseUrl ? "Found" : "Missing");
+  console.log("Current Key:", supabaseKey ? "Found" : "Missing");
 }
 
-// Nếu có cấu hình thì tạo client, nếu không thì trả về null (để không crash app)
-export const supabase = isConfigured 
-    ? createClient(supabaseUrl, supabaseKey) 
-    : null;
+// Khởi tạo Supabase client
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co', 
+  supabaseKey || 'placeholder-key'
+);

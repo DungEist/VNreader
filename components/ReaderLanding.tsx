@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
-import { Play, BookOpen, Clock, Loader2, Search, ServerCrash, LayoutGrid, RotateCcw, Save, Trash2, BookText } from 'lucide-react';
-import { Story, SaveState } from '../types';
-import { serverFetchAllStories } from '../utils/mockServer';
+import { Play, BookOpen, Clock, Loader2, Search, ServerCrash, LayoutGrid, RotateCcw, Save, Trash2, BookText, Facebook, Twitter, Mail, Heart, MessageCircle, X, ShieldAlert } from 'lucide-react';
+import { Story, SaveState, AppConfig } from '../types';
+import { serverFetchAllStories, serverFetchConfig, DEFAULT_APP_CONFIG } from '../utils/mockServer';
 import { getSaves, deleteSave } from '../utils/storage';
 
 interface ReaderLandingProps {
@@ -11,7 +12,6 @@ interface ReaderLandingProps {
   onLoadSave: (save: SaveState) => void;
 }
 
-// Helper: Loại bỏ các thẻ HTML để chỉ hiển thị text thuần, tránh lộ code glossary
 const stripHtml = (html: string | undefined) => {
     if (!html) return "";
     return html.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
@@ -20,18 +20,27 @@ const stripHtml = (html: string | undefined) => {
 const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory, onClearCache, onLoadSave }) => {
   const [stories, setStories] = useState<Story[]>([]);
   const [saves, setSaves] = useState<SaveState[]>([]);
+  const [appConfig, setAppConfig] = useState<AppConfig>(DEFAULT_APP_CONFIG);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Modals state
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [showDonateModal, setShowDonateModal] = useState(false);
 
   const loadData = async () => {
     setIsLoading(true);
     try {
-      const data = await serverFetchAllStories();
-      setStories(data);
+      const [storiesData, configData] = await Promise.all([
+          serverFetchAllStories(),
+          serverFetchConfig()
+      ]);
+      setStories(storiesData);
+      setAppConfig(configData);
       const localSaves = getSaves().sort((a, b) => b.timestamp - a.timestamp);
       setSaves(localSaves);
     } catch (e) {
-      console.error("Failed to fetch stories", e);
+      console.error("Failed to fetch reader data", e);
     } finally {
       setIsLoading(false);
     }
@@ -177,14 +186,12 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
                                <p className="text-xs text-gray-400 line-clamp-3 leading-relaxed italic">
                                    "{stripHtml(save.previewText)}"
                                </p>
-                               <div className="absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-black/60 to-transparent"></div>
                            </div>
 
                            <div className="pt-2 flex items-center justify-between text-xs font-bold">
                                <span className="text-gray-600 group-hover:text-blue-400 transition-colors flex items-center gap-2">
                                   <Play size={12} fill="currentColor"/> QUAY LẠI
                                </span>
-                               <span className="text-[10px] text-gray-700 font-mono">SAVE_ID: {save.id.slice(-4)}</span>
                            </div>
                        </div>
                    ))}
@@ -217,9 +224,6 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
                     <h3 className="text-2xl font-black text-gray-300 mb-2">
                         {stories.length === 0 ? "Thư viện hiện đang trống" : "Không tìm thấy tác phẩm"}
                     </h3>
-                    <p className="text-gray-500 max-w-sm mx-auto text-sm leading-relaxed">
-                        Vui lòng liên hệ với quản trị viên để cập nhật danh sách tác phẩm mới.
-                    </p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -244,12 +248,6 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
                                     </div>
                                 )}
                                 
-                                <div className="absolute top-4 right-4 z-20">
-                                    <div className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-black uppercase rounded-xl tracking-widest shadow-2xl">
-                                        {story.scenes ? Object.keys(story.scenes).length : 0} Pgs
-                                    </div>
-                                </div>
-
                                 <div className="absolute bottom-6 left-6 z-20 right-6">
                                     <h3 className="text-2xl font-black text-white mb-1 group-hover:text-blue-400 transition-colors line-clamp-2 drop-shadow-2xl">
                                       {story.title}
@@ -278,23 +276,116 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
 
       </main>
 
-      {/* MINIMAL FOOTER */}
+      {/* FOOTER */}
       <footer className="border-t border-white/5 py-12 px-6 bg-[#050505]">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-2 opacity-30">
                   <BookText size={16} />
                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">VN Reader Pro</span>
               </div>
-              <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest">
+              <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest text-center md:text-left">
                   © 2024 Developed for the ultimate visual novel experience.
               </p>
-              <div className="flex gap-6 text-[10px] font-bold text-gray-700 uppercase tracking-widest">
-                  <a href="#" className="hover:text-blue-500 transition-colors">Privacy</a>
-                  <a href="#" className="hover:text-blue-500 transition-colors">Terms</a>
-                  <a href="#" className="hover:text-blue-500 transition-colors">Support</a>
+              <div className="flex gap-8 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                  <a 
+                    href={appConfig.bugReportUrl} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="hover:text-red-500 transition-all flex items-center gap-2"
+                  >
+                    <ShieldAlert size={12}/> Báo cáo lỗi
+                  </a>
+                  <button 
+                    onClick={() => setShowContactModal(true)} 
+                    className="hover:text-blue-500 transition-all flex items-center gap-2"
+                  >
+                    <MessageCircle size={12}/> Liên hệ
+                  </button>
+                  <button 
+                    onClick={() => setShowDonateModal(true)} 
+                    className="hover:text-pink-500 transition-all flex items-center gap-2"
+                  >
+                    <Heart size={12} fill="currentColor"/> Donate
+                  </button>
               </div>
           </div>
       </footer>
+
+      {/* MODAL: CONTACT US */}
+      {showContactModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
+            <div className="bg-[#121212] border border-white/10 w-full max-w-sm rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-8 relative">
+                <button onClick={() => setShowContactModal(false)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors">
+                    <X size={20}/>
+                </button>
+                <div className="w-16 h-16 bg-blue-600/20 text-blue-500 rounded-full flex items-center justify-center">
+                    <MessageCircle size={32}/>
+                </div>
+                <div className="text-center">
+                    <h3 className="text-xl font-black text-white mb-2">Liên hệ với chúng tôi</h3>
+                    <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Connect via Social Networks</p>
+                </div>
+                <div className="grid grid-cols-3 gap-6 w-full">
+                    <a href={appConfig.fbUrl} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-2 group">
+                        <div className="w-14 h-14 bg-gray-900 border border-white/5 rounded-2xl flex items-center justify-center text-gray-500 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-lg">
+                            <Facebook size={24}/>
+                        </div>
+                        <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-300">FB</span>
+                    </a>
+                    <a href={appConfig.xUrl} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-2 group">
+                        <div className="w-14 h-14 bg-gray-900 border border-white/5 rounded-2xl flex items-center justify-center text-gray-500 group-hover:bg-white group-hover:text-black transition-all shadow-lg">
+                            <Twitter size={24}/>
+                        </div>
+                        <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-300">X</span>
+                    </a>
+                    <a href={appConfig.mailUrl} className="flex flex-col items-center gap-2 group">
+                        <div className="w-14 h-14 bg-gray-900 border border-white/5 rounded-2xl flex items-center justify-center text-gray-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-lg">
+                            <Mail size={24}/>
+                        </div>
+                        <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-300">MAIL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+      )}
+
+      {/* MODAL: DONATE */}
+      {showDonateModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 animate-in fade-in zoom-in duration-300">
+            <div className="w-full max-w-4xl relative">
+                <button onClick={() => setShowDonateModal(false)} className="absolute -top-12 right-0 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all flex items-center gap-2 text-xs font-bold px-6">
+                    <X size={18}/> ĐÓNG TRÌNH XEM
+                </button>
+                <div className="bg-[#0f0f0f] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
+                    <div className="p-8 border-b border-white/5 flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-pink-600/20 text-pink-500 rounded-2xl flex items-center justify-center">
+                                <Heart size={24} fill="currentColor"/>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-black text-white">Ủng hộ chúng tôi</h3>
+                                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Support the developers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="aspect-video bg-black flex items-center justify-center relative overflow-hidden">
+                        {appConfig.donateImageUrl ? (
+                            <img 
+                                src={appConfig.donateImageUrl} 
+                                className="w-full h-full object-contain animate-in fade-in duration-1000" 
+                                alt="Donate Info"
+                            />
+                        ) : (
+                            <div className="flex flex-col items-center gap-4 text-gray-700">
+                                <Heart size={64} className="opacity-10"/>
+                                <span className="text-xs font-bold uppercase tracking-widest">Không tìm thấy thông tin donate</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+      )}
     </div>
   );
 };

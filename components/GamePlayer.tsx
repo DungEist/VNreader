@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Settings, Save, Home, SkipForward, PlayCircle, PauseCircle, History, X, ChevronDown, Menu, LogOut, RotateCcw, HelpCircle } from 'lucide-react';
-import { Story, ReaderSettings, SaveState, Choice, HistoryEntry } from '../types';
+import { Settings, Save, Home, SkipForward, PlayCircle, PauseCircle, History, X, ChevronDown, Menu, LogOut, RotateCcw, HelpCircle, Download, CornerDownRight, Info } from 'lucide-react';
+import { Story, ReaderSettings, SaveState, Choice, HistoryEntry, Scene, Character, GlossaryEntry } from '../types';
 import { useTypewriter } from '../hooks/useTypewriter';
 import { useStoryAudio } from '../hooks/useStoryAudio';
 import { saveSettings } from '../utils/storage';
@@ -8,14 +9,17 @@ import SettingsModal from './SettingsModal';
 import SaveLoadModal from './SaveLoadModal';
 
 // --- VISUAL LAYER ---
-const VisualStage: React.FC<{ background?: string, characters: any[] }> = ({ background, characters }) => {
+const VisualStage: React.FC<{ 
+    background?: string, 
+    characters: Character[],
+    activeName?: string 
+}> = ({ background, characters, activeName }) => {
     const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
         e.currentTarget.style.display = 'none';
     };
 
     return (
         <div className="absolute inset-0 z-0 bg-black overflow-hidden select-none pointer-events-none">
-            {/* Background with subtle zoom effect for liveliness */}
             <div className="absolute inset-0 animate-in fade-in duration-1000">
                 {background ? (
                     <img 
@@ -27,91 +31,103 @@ const VisualStage: React.FC<{ background?: string, characters: any[] }> = ({ bac
                 ) : (
                     <div className="w-full h-full bg-gradient-to-b from-gray-900 to-black" />
                 )}
-                <div className="absolute inset-0 bg-black/10"></div> {/* Vignette overlay */}
+                <div className="absolute inset-0 bg-black/10"></div>
             </div>
             
-            {/* Characters */}
-            {characters.map((char, idx) => (
-                <img 
-                    key={`${char.image}-${idx}`}
-                    src={char.image}
-                    className="absolute bottom-0 max-h-[85vh] h-auto w-auto object-contain transition-all duration-500 ease-out z-10"
-                    style={{ 
-                        left: char.position === 'left' ? '20%' : char.position === 'right' ? '80%' : '50%', 
-                        transform: 'translateX(-50%)',
-                        filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.5))'
-                    }}
-                    alt="char"
-                    onError={handleImgError}
-                />
-            ))}
+            {characters.map((char, idx) => {
+                const isActive = activeName && char.name && activeName.toLowerCase().includes(char.name.toLowerCase());
+                const brightness = isActive ? 'brightness(1.1) contrast(1.05)' : activeName ? 'brightness(0.5)' : 'brightness(1)';
+                
+                let left = '50%';
+                if (char.position === 'left') left = '20%';
+                if (char.position === 'right') left = '80%';
+                if (char.position === 'center') left = '50%';
+
+                return (
+                    <img 
+                        key={`${char.image}-${idx}`}
+                        src={char.image}
+                        className="absolute bottom-0 max-h-[85vh] h-auto w-auto object-contain transition-all duration-500 ease-out z-10"
+                        style={{ 
+                            left, 
+                            transform: `translateX(-50%) ${isActive ? 'scale(1.02)' : 'scale(1)'}`,
+                            filter: `${brightness} drop-shadow(0 0 20px rgba(0,0,0,0.5))`,
+                            zIndex: isActive ? 20 : 10
+                        }}
+                        alt="char"
+                        onError={handleImgError}
+                    />
+                );
+            })}
         </div>
     );
 };
 
-// --- DIALOGUE BOX (Redesigned) ---
+// --- DIALOGUE BOX ---
 const DialogueBox: React.FC<{ 
     text: string, 
     name?: string, 
     isTyping: boolean, 
     onAdvance: () => void,
-    onContentClick: (e: React.MouseEvent) => void,
+    onTermClick: (termId: string) => void,
     settings: ReaderSettings 
-}> = ({ text, name, isTyping, onAdvance, onContentClick, settings }) => (
-    <div className="absolute bottom-0 left-0 w-full pb-8 pt-24 px-4 z-20 flex justify-center bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none">
-        <div 
-            className="w-full max-w-4xl pointer-events-auto cursor-pointer group relative" 
-            onClick={(e) => {
-                // Check if user clicked on a glossary term
-                const target = e.target as HTMLElement;
-                if (target.closest('.vn-glossary-term')) {
-                    onContentClick(e);
-                    return;
-                }
-                onAdvance();
-            }}
-        >
-            {/* Character Name Tag - Floating above */}
-            {name && (
-                <div className="absolute -top-6 left-0 z-10 animate-in slide-in-from-left-2 fade-in duration-300">
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 text-blue-200 font-bold text-lg px-6 py-1 rounded-t-lg rounded-br-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-                        {name}
-                    </div>
-                </div>
-            )}
+}> = ({ text, name, isTyping, onAdvance, onTermClick, settings }) => {
+    const handleClick = (e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const termElement = target.closest('.glossary-term') as HTMLElement;
+        if (termElement && termElement.dataset.termId) {
+            e.stopPropagation();
+            onTermClick(termElement.dataset.termId);
+        } else {
+            onAdvance();
+        }
+    };
 
-            {/* Text Box */}
+    return (
+        <div className="absolute bottom-0 left-0 w-full pb-8 pt-24 px-4 z-30 flex justify-center bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none">
             <div 
-                className="backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 min-h-[140px] shadow-2xl relative transition-all duration-300 hover:border-white/20 hover:bg-black/80"
-                style={{ backgroundColor: `rgba(10, 10, 10, ${Math.max(0.6, settings.overlayOpacity)})` }}
+                className="w-full max-w-4xl pointer-events-auto cursor-pointer group relative" 
+                onClick={handleClick}
             >
+                {name && (
+                    <div className="absolute -top-6 left-0 z-10 animate-in slide-in-from-left-2 fade-in duration-300">
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 text-blue-200 font-bold text-lg px-6 py-1 rounded-t-lg rounded-br-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+                            {name}
+                        </div>
+                    </div>
+                )}
+
                 <div 
-                    className={`text-gray-100 leading-relaxed tracking-wide ${settings.fontFamily === 'serif' ? 'font-serif' : settings.fontFamily === 'mono' ? 'font-mono' : 'font-sans'}`}
-                    style={{ 
-                        fontSize: settings.fontSize === 'xlarge' ? '1.5rem' : settings.fontSize === 'large' ? '1.25rem' : '1.125rem',
-                        textShadow: '0 1px 2px rgba(0,0,0,0.8)'
-                    }}
-                    dangerouslySetInnerHTML={{ __html: text }}
-                />
-                
-                {/* Typing Indicator / Next Indicator */}
-                <div className="absolute bottom-4 right-6 text-white/50">
-                    {!isTyping ? (
-                        <ChevronDown size={24} className="animate-bounce text-blue-400" />
-                    ) : (
-                        <span className="inline-flex gap-1">
-                            <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                            <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                            <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce"></span>
-                        </span>
-                    )}
+                    className="backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 min-h-[140px] shadow-2xl relative transition-all duration-300 hover:border-white/20 hover:bg-black/80"
+                    style={{ backgroundColor: `rgba(10, 10, 10, ${Math.max(0.6, settings.overlayOpacity)})` }}
+                >
+                    <div 
+                        className={`text-gray-100 leading-relaxed tracking-wide ${settings.fontFamily === 'serif' ? 'font-serif' : settings.fontFamily === 'mono' ? 'font-mono' : 'font-sans'}`}
+                        style={{ 
+                            fontSize: settings.fontSize === 'xlarge' ? '1.5rem' : settings.fontSize === 'large' ? '1.25rem' : '1.125rem',
+                            textShadow: '0 1px 2px rgba(0,0,0,0.8)'
+                        }}
+                        dangerouslySetInnerHTML={{ __html: text }}
+                    />
+                    
+                    <div className="absolute bottom-4 right-6 text-white/50">
+                        {!isTyping ? (
+                            <ChevronDown size={24} className="animate-bounce text-blue-400" />
+                        ) : (
+                            <span className="inline-flex gap-1">
+                                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                                <span className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce"></span>
+                            </span>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
-// --- SCROLL VIEW COMPONENT (NEW) ---
+// --- SCROLL VIEW COMPONENT ---
 const ScrollView: React.FC<{
     history: HistoryEntry[],
     currentText: string,
@@ -121,15 +137,15 @@ const ScrollView: React.FC<{
     isWaitingForChoice: boolean,
     onAdvance: () => void,
     onChoice: (c: Choice) => void,
-    onContentClick: (e: React.MouseEvent) => void,
+    onJump: (entry: HistoryEntry) => void,
+    onTermClick: (termId: string) => void,
     settings: ReaderSettings
 }> = ({ 
     history, currentText, currentName, isTyping, choices, isWaitingForChoice, 
-    onAdvance, onChoice, onContentClick, settings 
+    onAdvance, onChoice, onJump, onTermClick, settings 
 }) => {
     const bottomRef = useRef<HTMLDivElement>(null);
 
-    // Auto scroll to bottom when content updates
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [history.length, currentText, isTyping, choices]);
@@ -140,49 +156,60 @@ const ScrollView: React.FC<{
         return `${sizeClass} ${fontClass}`;
     };
 
+    const handleTextContainerClick = (e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const termElement = target.closest('.glossary-term') as HTMLElement;
+        if (termElement && termElement.dataset.termId) {
+            e.stopPropagation();
+            onTermClick(termElement.dataset.termId);
+            return;
+        }
+
+        if (!target.closest('button')) {
+            onAdvance();
+        }
+    };
+
     return (
         <div 
             className="absolute inset-0 z-20 overflow-y-auto px-4 pb-32 pt-20 flex flex-col items-center"
-            onClick={(e) => {
-                const target = e.target as HTMLElement;
-                if (!target.closest('button') && !target.closest('.vn-glossary-term')) {
-                    onAdvance();
-                }
-            }}
+            onClick={handleTextContainerClick}
         >
             <div className="w-full max-w-3xl space-y-6">
-                {/* RENDER HISTORY */}
                 {history.map((entry, idx) => (
-                    <div key={idx} className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                    <div key={idx} className="animate-in fade-in slide-in-from-bottom-2 duration-300 group/item relative">
                         {entry.type === 'choice' ? (
-                            <div className="flex justify-end">
-                                <div className="bg-blue-900/40 text-blue-200 px-4 py-2 rounded-l-xl rounded-tr-xl text-sm border border-blue-500/30 italic">
-                                    Đã chọn: {entry.text}
+                            <div className="flex justify-end mb-2">
+                                <div className="bg-blue-900/40 text-blue-200 px-4 py-1.5 rounded-l-xl rounded-tr-xl text-[11px] border border-blue-500/30 italic flex items-center gap-2">
+                                    <CornerDownRight size={12}/> Đã chọn: {entry.text}
                                 </div>
                             </div>
                         ) : (
-                            <div className="flex flex-col gap-1 items-start">
+                            <div className="relative">
                                 {entry.characterName && (
-                                    <div className="text-blue-300 font-bold text-sm px-2 drop-shadow-md">{entry.characterName}</div>
+                                    <div className="text-blue-400 font-black text-[10px] uppercase tracking-widest mb-1">{entry.characterName}</div>
                                 )}
-                                <div 
-                                    className={`bg-black/60 backdrop-blur-md text-gray-200 px-6 py-4 rounded-2xl border border-white/10 shadow-lg ${getFontStyle()}`}
-                                    onClick={onContentClick}
-                                    dangerouslySetInnerHTML={{ __html: entry.text }}
-                                />
+                                <div className="text-gray-300 leading-relaxed text-sm md:text-base border-l-2 border-white/5 pl-4 py-1" dangerouslySetInnerHTML={{ __html: entry.text }} />
+                                
+                                {entry.sceneId && (
+                                    <button 
+                                        onClick={() => onJump(entry)}
+                                        className="absolute top-1/2 -translate-y-1/2 right-4 p-2 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all flex items-center gap-2 text-[10px] font-bold"
+                                    >
+                                        <CornerDownRight size={14}/> QUAY LẠI CẢNH NÀY
+                                    </button>
+                                )}
                             </div>
                         )}
                     </div>
                 ))}
 
-                {/* RENDER CURRENT TYPING TEXT */}
                 <div className="flex flex-col gap-1 items-start min-h-[80px]">
                     {currentName && (
                         <div className="text-blue-300 font-bold text-sm px-2 drop-shadow-md">{currentName}</div>
                     )}
                     <div 
                         className={`bg-black/70 backdrop-blur-md text-white px-6 py-4 rounded-2xl border border-blue-500/30 shadow-xl w-full relative ${getFontStyle()}`}
-                        onClick={onContentClick}
                     >
                          <div dangerouslySetInnerHTML={{ __html: currentText }} />
                          {!isTyping && !isWaitingForChoice && (
@@ -193,7 +220,6 @@ const ScrollView: React.FC<{
                     </div>
                 </div>
 
-                {/* RENDER CHOICES INLINE */}
                 {isWaitingForChoice && !isTyping && (
                     <div className="flex flex-col gap-3 py-4 animate-in fade-in slide-in-from-bottom-4">
                         {choices.map((c, idx) => (
@@ -214,13 +240,36 @@ const ScrollView: React.FC<{
     );
 };
 
-// --- CHOICE MENU (Overlay for VN Mode) ---
+// --- GLOSSARY POPUP ---
+const GlossaryPopup: React.FC<{ entry: GlossaryEntry, onClose: () => void }> = ({ entry, onClose }) => (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 animate-in fade-in duration-300" onClick={onClose}>
+        <div 
+            className="w-full max-w-sm bg-gray-900 border border-blue-500/50 rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+            onClick={e => e.stopPropagation()}
+        >
+            <div className="bg-blue-600/20 border-b border-blue-500/20 p-4 flex items-center justify-between">
+                <h3 className="text-blue-400 font-black flex items-center gap-2 uppercase tracking-widest text-sm">
+                    <Info size={16}/> {entry.term}
+                </h3>
+                <button onClick={onClose} className="p-1 hover:bg-white/10 rounded-full transition-colors">
+                    <X size={18}/>
+                </button>
+            </div>
+            <div className="p-6">
+                <p className="text-gray-300 leading-relaxed text-sm italic">
+                    {entry.definition}
+                </p>
+            </div>
+            <div className="p-4 bg-black/20 text-center">
+                <button onClick={onClose} className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white transition-colors">Đóng giải nghĩa</button>
+            </div>
+        </div>
+    </div>
+);
+
 const ChoiceMenu: React.FC<{ choices: Choice[], onSelect: (c: Choice) => void }> = ({ choices, onSelect }) => (
-    // Removed bg-black/70 and backdrop-blur-sm. 
-    // Kept z-30 to stay above DialogueBox.
-    <div className="absolute inset-0 z-30 flex items-center justify-center p-6 animate-in fade-in duration-500 pointer-events-none">
+    <div className="absolute inset-0 z-40 flex items-center justify-center p-6 animate-in fade-in duration-500 pointer-events-none">
         <div className="flex flex-col gap-4 w-full max-w-lg pointer-events-auto">
-            {/* Removed the 'Đưa ra quyết định' header */}
             {choices.map((c, idx) => (
                 <button 
                     key={idx} 
@@ -235,7 +284,6 @@ const ChoiceMenu: React.FC<{ choices: Choice[], onSelect: (c: Choice) => void }>
     </div>
 );
 
-// --- MENU BUTTONS (Minimalist) ---
 const ControlBar: React.FC<{
     onMenu: () => void,
     onHistory: () => void,
@@ -243,58 +291,103 @@ const ControlBar: React.FC<{
     isAutoPlay: boolean
 }> = ({ onMenu, onHistory, onAutoPlay, isAutoPlay }) => (
     <div className="absolute top-0 right-0 p-6 z-40 flex gap-3">
-        <button 
-            onClick={onAutoPlay} 
-            className={`p-3 rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110 ${isAutoPlay ? 'bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]' : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'}`}
-            title="Tự động chạy"
-        >
+        <button onClick={onAutoPlay} className={`p-3 rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110 ${isAutoPlay ? 'bg-blue-600 text-white' : 'bg-black/30 text-white/70 hover:bg-black/50 hover:text-white'}`}>
             {isAutoPlay ? <PauseCircle size={20} /> : <PlayCircle size={20} />}
         </button>
-        <button 
-            onClick={onHistory} 
-            className="p-3 bg-black/30 hover:bg-black/50 text-white/70 hover:text-white rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110"
-            title="Lịch sử hội thoại"
-        >
+        <button onClick={onHistory} className="p-3 bg-black/30 hover:bg-black/50 text-white/70 hover:text-white rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110">
             <History size={20} />
         </button>
-        <button 
-            onClick={onMenu} 
-            className="p-3 bg-black/30 hover:bg-black/50 text-white/70 hover:text-white rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110"
-            title="Menu"
-        >
+        <button onClick={onMenu} className="p-3 bg-black/30 hover:bg-black/50 text-white/70 hover:text-white rounded-full backdrop-blur-md border border-white/10 transition-all hover:scale-110">
             <Menu size={20} />
         </button>
     </div>
 );
 
-// --- PAUSE/MENU MODAL ---
-const InGameMenu: React.FC<{
-    isOpen: boolean,
-    onClose: () => void,
-    onSave: () => void,
-    onLoad: () => void,
-    onSettings: () => void,
-    onExit: () => void
-}> = ({ isOpen, onClose, onSave, onLoad, onSettings, onExit }) => {
-    if (!isOpen) return null;
+// --- OVERLAY: GAME MENU ---
+const GameMenuOverlay: React.FC<{ 
+    onClose: () => void, 
+    onSave: () => void, 
+    onLoad: () => void, 
+    onSettings: () => void, 
+    onExit: () => void 
+}> = ({ onClose, onSave, onLoad, onSettings, onExit }) => (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-300">
+        <div className="w-full max-w-xs space-y-4">
+            <button onClick={onSave} className="w-full bg-white/10 hover:bg-white/20 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                <div className="p-2 bg-blue-600 rounded-lg"><Save size={20}/></div> Lưu Game
+            </button>
+            <button onClick={onLoad} className="w-full bg-white/10 hover:bg-white/20 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                <div className="p-2 bg-green-600 rounded-lg"><Download size={20}/></div> Tải Game
+            </button>
+            <button onClick={onSettings} className="w-full bg-white/10 hover:bg-white/20 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                <div className="p-2 bg-purple-600 rounded-lg"><Settings size={20}/></div> Cài đặt
+            </button>
+            <button onClick={onExit} className="w-full bg-red-900/20 hover:bg-red-900/40 border border-red-500/30 p-4 rounded-2xl flex items-center gap-4 text-red-400 font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                <div className="p-2 bg-red-600 rounded-lg text-white"><LogOut size={20}/></div> Thoát truyện
+            </button>
+            <button onClick={onClose} className="w-full py-4 text-gray-500 font-black uppercase text-xs tracking-[0.2em] hover:text-white transition-colors">
+                Quay lại
+            </button>
+        </div>
+    </div>
+);
+
+// --- OVERLAY: HISTORY BACKLOG ---
+const HistoryOverlay: React.FC<{ history: HistoryEntry[], onClose: () => void, onJump: (entry: HistoryEntry) => void }> = ({ history, onClose, onJump }) => {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }, []);
+
     return (
-        <div className="absolute inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center animate-in fade-in duration-200">
-            <div className="bg-gray-900 border border-white/10 p-8 rounded-2xl shadow-2xl min-w-[300px] space-y-4">
-                <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold text-white">Menu Game</h2>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white"><X/></button>
-                </div>
-                <button onClick={onSave} className="w-full flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-left text-gray-200 transition-colors"><Save size={18}/> Lưu Game</button>
-                <button onClick={onLoad} className="w-full flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-left text-gray-200 transition-colors"><SkipForward size={18}/> Tải Game</button>
-                <button onClick={onSettings} className="w-full flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg text-left text-gray-200 transition-colors"><Settings size={18}/> Cài Đặt</button>
-                <div className="h-px bg-gray-700 my-2"></div>
-                <button onClick={onExit} className="w-full flex items-center gap-3 p-3 bg-red-900/20 hover:bg-red-900/40 text-red-400 rounded-lg text-left transition-colors"><LogOut size={18}/> Thoát Game</button>
+        <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-xl flex flex-col p-6 animate-in slide-in-from-bottom-full duration-500">
+            <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+                <h2 className="text-xl font-black uppercase tracking-widest flex items-center gap-3">
+                    <History className="text-blue-500"/> Nhật ký hội thoại
+                </h2>
+                <button onClick={onClose} className="p-3 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white">
+                    <X size={24}/>
+                </button>
+            </div>
+            <div ref={scrollRef} className="flex-1 overflow-y-auto space-y-4 px-4 custom-scrollbar pb-10">
+                {history.length === 0 ? (
+                    <div className="h-full flex flex-col items-center justify-center text-gray-700">
+                        <History size={48} className="opacity-10 mb-4"/>
+                        <span className="text-xs font-bold uppercase tracking-widest">Không có dữ liệu lịch sử</span>
+                    </div>
+                ) : (
+                    history.map((entry, idx) => (
+                        <div key={idx} className="animate-in fade-in duration-300 group relative">
+                            {entry.type === 'choice' ? (
+                                <div className="flex justify-end mb-2">
+                                    <div className="bg-blue-900/40 text-blue-200 px-4 py-1.5 rounded-l-xl rounded-tr-xl text-[11px] border border-blue-500/30 italic flex items-center gap-2">
+                                        <CornerDownRight size={12}/> Đã chọn: {entry.text}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="relative">
+                                    {entry.characterName && (
+                                        <div className="text-blue-400 font-black text-[10px] uppercase tracking-widest mb-1">{entry.characterName}</div>
+                                    )}
+                                    <div className="text-gray-300 leading-relaxed text-sm md:text-base border-l-2 border-white/5 pl-4 py-1" dangerouslySetInnerHTML={{ __html: entry.text }} />
+                                    
+                                    {entry.sceneId && (
+                                        <button 
+                                            onClick={() => onJump(entry)}
+                                            className="absolute top-1/2 -translate-y-1/2 right-4 p-2 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all flex items-center gap-2 text-[10px] font-bold"
+                                        >
+                                            <CornerDownRight size={14}/> QUAY LẠI CẢNH NÀY
+                                        </button>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );
-}
-
-// --- MAIN COMPONENT ---
+};
 
 interface GamePlayerProps {
     story: Story;
@@ -308,47 +401,37 @@ interface GamePlayerProps {
 const GamePlayer: React.FC<GamePlayerProps> = ({ 
     story, initialSceneId, initialGameState, settings, onSettingsChange, onExit 
 }) => {
-    // --- STATE ---
     const [sceneId, setSceneId] = useState(initialSceneId || story.startSceneId);
     const [dialogueIndex, setDialogueIndex] = useState(initialGameState?.currentDialogueIndex || 0);
     const [history, setHistory] = useState(initialGameState?.history || []);
-    const [isTextFinished, setIsTextFinished] = useState(false); // New state to track if typewriter is done
+    const [isTextFinished, setIsTextFinished] = useState(false);
     
-    // UI State
     const [showHistory, setShowHistory] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
     const [saveMode, setSaveMode] = useState<'save' | 'load' | null>(null);
     const [autoPlay, setAutoPlay] = useState(false);
-
-    // Glossary State
-    const [activeGlossary, setActiveGlossary] = useState<{ term: string, note: string } | null>(null);
-
-    // Jump State Reference to handle Typewriter race condition
+    const [activeTerm, setActiveTerm] = useState<GlossaryEntry | null>(null);
     const isRestoringRef = useRef(false);
 
-    // Get current scene data (with safety fallback)
-    const scene = story.scenes[sceneId] || { 
+    const scene: Scene = story.scenes[sceneId] || { 
         id: 'error', 
-        text: 'Lỗi: Không tìm thấy cảnh này (ID: ' + sceneId + '). File cốt truyện có thể bị hỏng.', 
-        choices: [{ text: "Quay về màn hình chính", nextSceneId: "__EXIT__" }] 
-    };
+        text: 'Cảnh không tìm thấy.', 
+        choices: [{ text: "Thoát", nextSceneId: "__EXIT__" }] 
+    } as Scene;
 
-    // Resolve current dialogue chunk
     const dialogueList = scene.dialogues || [{ text: scene.text, characterName: scene.characterName, voice: scene.voice }];
     const safeIndex = Math.min(Math.max(0, dialogueIndex), dialogueList.length - 1);
     const currentDialogue = dialogueList[safeIndex] || { text: "..." };
 
-    // Determine Logic State
     const isLastDialogue = safeIndex >= dialogueList.length - 1;
     const hasChoices = scene.choices && scene.choices.length > 0;
     const isWaitingForChoice = isLastDialogue && hasChoices;
 
-    // --- HOOKS ---
     const { displayedText, isTyping, forceComplete } = useTypewriter(
         currentDialogue.text, 
         settings.textSpeed === 'instant' ? 0 : (settings.textSpeed === 'fast' ? 15 : settings.textSpeed === 'slow' ? 60 : 30),
-        () => setIsTextFinished(true) // Set finished when Typewriter completes
+        () => setIsTextFinished(true)
     );
 
     const { playSfx } = useStoryAudio(
@@ -357,145 +440,115 @@ const GamePlayer: React.FC<GamePlayerProps> = ({
         settings
     );
 
-    // --- EFFECTS ---
-
-    // Handle Typewriter Restoration Race Condition
+    // SFX on scene change
     useEffect(() => {
-        // If we are restoring state (jumping), force complete immediately
+        if (scene.sfx) {
+            playSfx(scene.sfx);
+        }
+    }, [sceneId]);
+
+    useEffect(() => {
         if (isRestoringRef.current) {
              forceComplete();
              setIsTextFinished(true);
              isRestoringRef.current = false;
         } 
-        // Note: We removed the 'else { setIsTextFinished(false) }' block.
-        // The reset to false is now handled explicitly in handleAdvance/handleChoice
-        // to prevent UI flickering during the React render cycle.
     }, [currentDialogue.text, forceComplete]); 
 
-    // Handle AutoPlay
     useEffect(() => {
-        if (autoPlay && isTextFinished && !isWaitingForChoice && !showHistory && !showSettings && !saveMode && !showMenu && !activeGlossary) {
+        if (autoPlay && isTextFinished && !isWaitingForChoice && !showHistory && !showSettings && !saveMode && !showMenu && !activeTerm) {
             const timer = setTimeout(() => handleAdvance(), settings.autoPlaySpeed);
             return () => clearTimeout(timer);
         }
-    }, [autoPlay, isTextFinished, isWaitingForChoice, showHistory, showSettings, saveMode, showMenu, activeGlossary]);
+    }, [autoPlay, isTextFinished, isWaitingForChoice, showHistory, showSettings, saveMode, showMenu, activeTerm]);
 
-    // Play SFX on scene enter
-    useEffect(() => {
-        if(scene.sfx) playSfx(scene.sfx);
-    }, [sceneId]);
-
-    // --- ACTIONS ---
     const addToHistory = () => {
         setHistory(prev => [...prev, { 
+            type: 'dialogue',
             text: currentDialogue.text, 
             characterName: currentDialogue.characterName, 
             voice: currentDialogue.voice,
-            // Capture state for jump back
             sceneId: sceneId,
             dialogueIndex: safeIndex
         }]);
     };
 
     const handleAdvance = () => {
-        if (showHistory || showSettings || saveMode || showMenu || activeGlossary) return;
-
-        if (isTyping) {
-            forceComplete();
-            return;
-        }
-
+        if (showHistory || showSettings || saveMode || showMenu || activeTerm) return;
+        if (isTyping) { forceComplete(); return; }
         if (isWaitingForChoice) return;
 
         addToHistory();
-        setIsTextFinished(false); // CRITICAL: Reset immediately to prevent flash
+        setIsTextFinished(false);
 
         if (!isLastDialogue) {
             setDialogueIndex(prev => prev + 1);
         } else {
             if (scene.nextSceneId) {
                 if (scene.nextSceneId === '__EXIT__') onExit();
-                else {
-                    setSceneId(scene.nextSceneId);
+                else { setSceneId(scene.nextSceneId); setDialogueIndex(0); }
+            } else {
+                const allScenes = Object.values(story.scenes) as Scene[];
+                const episodeScenes = allScenes.filter(s => s.episodeId === scene.episodeId).sort((a,b) => (a.order || 0) - (b.order || 0));
+                const currentIndex = episodeScenes.findIndex(s => s.id === scene.id);
+                if (currentIndex >= 0 && currentIndex < episodeScenes.length - 1) {
+                    setSceneId(episodeScenes[currentIndex + 1].id);
                     setDialogueIndex(0);
-                }
+                } else onExit();
             }
         }
     };
 
     const handleChoice = (c: Choice) => {
         if (c.sound) playSfx(c.sound);
-        addToHistory();
-        setHistory(prev => [...prev, { text: c.text, characterName: 'Quyết định', type: 'choice', sceneId: sceneId, dialogueIndex: safeIndex }]);
-        setIsTextFinished(false); // CRITICAL: Reset immediately
-
-        if (c.nextSceneId === '__EXIT__') onExit();
-        else {
-            setSceneId(c.nextSceneId);
-            setDialogueIndex(0);
-        }
-    };
-
-    const handleLoadGame = (save: SaveState) => {
-        if(save.storyId !== story.id) { 
-            if(!confirm("File save này thuộc về cốt truyện khác. Bạn có muốn thử load không? (Có thể gây lỗi)")) return;
-        }
-        isRestoringRef.current = true; // Flag as restoring
-        setSceneId(save.currentSceneId);
-        setDialogueIndex(save.currentDialogueIndex || 0);
-        setHistory(save.history || []);
-        setSaveMode(null);
-        setShowMenu(false);
-        setAutoPlay(false);
-    };
-
-    // --- GLOSSARY HANDLER ---
-    const handleContentClick = (e: React.MouseEvent) => {
-        const target = e.target as HTMLElement;
-        const glossaryTerm = target.closest('.vn-glossary-term') as HTMLElement;
         
-        if (glossaryTerm) {
-            e.stopPropagation();
-            const note = glossaryTerm.dataset.note;
-            const term = glossaryTerm.innerText;
-            if (note) {
-                setActiveGlossary({ term, note });
-            }
-        }
+        // Record current dialogue to history before recording the choice
+        addToHistory();
+        
+        // Record the choice itself
+        setHistory(prev => [...prev, { 
+            type: 'choice',
+            text: c.text,
+            sceneId: sceneId,
+            dialogueIndex: safeIndex
+        }]);
+
+        setIsTextFinished(false);
+        if (c.nextSceneId === '__EXIT__') onExit();
+        else { setSceneId(c.nextSceneId); setDialogueIndex(0); }
     };
 
-    // --- JUMP HANDLER ---
-    const jumpToHistory = (entry: HistoryEntry) => {
+    const handleJumpToHistory = (entry: HistoryEntry) => {
         if (!entry.sceneId) return;
         
-        // Removed Confirmation Dialog as requested
-        
-        // Cut history to the point of jump
-        const entryIndex = history.indexOf(entry);
-        const newHistory = entryIndex >= 0 ? history.slice(0, entryIndex) : history;
-        
-        // Set restoring flag to avoid typing animation
         isRestoringRef.current = true;
-
-        setHistory(newHistory);
         setSceneId(entry.sceneId);
         setDialogueIndex(entry.dialogueIndex || 0);
+        
+        const entryIdx = history.findIndex(h => h.sceneId === entry.sceneId && h.dialogueIndex === entry.dialogueIndex);
+        if (entryIdx >= 0) {
+            setHistory(history.slice(0, entryIdx));
+        }
         
         setShowHistory(false);
         setAutoPlay(false);
     };
 
-    // Helper for characters
-    const characters = Array.isArray(scene.characters) 
-        ? scene.characters 
-        : (scene.characterImage && scene.characterImage !== 'none' ? [{ image: scene.characterImage, position: scene.characterPosition || 'center' }] : []);
+    const handleTermClick = (termId: string) => {
+        if (story.glossary && story.glossary[termId]) {
+            setActiveTerm(story.glossary[termId]);
+        }
+    };
 
-    // Check display mode from settings (default 'vn' if undefined)
-    const isScrollMode = settings.displayMode === 'scroll';
+    const characters = scene.characters || (scene.characterImage ? [{ image: scene.characterImage, position: scene.characterPosition || 'center' }] : []);
 
     return (
         <div className="relative w-full h-screen bg-black overflow-hidden font-sans select-none">
-            <VisualStage background={scene.backgroundImage} characters={characters} />
+            <VisualStage 
+                background={scene.backgroundImage} 
+                characters={characters} 
+                activeName={currentDialogue.characterName} 
+            />
             
             <ControlBar 
                 onMenu={() => setShowMenu(true)} 
@@ -504,124 +557,64 @@ const GamePlayer: React.FC<GamePlayerProps> = ({
                 isAutoPlay={autoPlay}
             />
 
-            {isScrollMode ? (
-                /* --- SCROLL MODE --- */
+            {settings.displayMode === 'scroll' ? (
                 <ScrollView 
-                    history={history}
-                    currentText={displayedText}
-                    currentName={currentDialogue.characterName}
-                    isTyping={isTyping}
-                    choices={scene.choices}
-                    isWaitingForChoice={isWaitingForChoice && isTextFinished}
-                    onAdvance={handleAdvance}
-                    onChoice={handleChoice}
-                    onContentClick={handleContentClick}
-                    settings={settings}
+                    history={history} currentText={displayedText} currentName={currentDialogue.characterName}
+                    isTyping={isTyping} choices={scene.choices} isWaitingForChoice={isWaitingForChoice && isTextFinished}
+                    onAdvance={handleAdvance} onChoice={handleChoice} onJump={handleJumpToHistory} onTermClick={handleTermClick} settings={settings}
                 />
             ) : (
-                /* --- CLASSIC VN MODE --- */
                 <>
                     <DialogueBox 
-                        text={displayedText} 
-                        name={currentDialogue.characterName} 
-                        isTyping={isTyping} 
-                        onAdvance={handleAdvance}
-                        onContentClick={handleContentClick}
-                        settings={settings}
+                        text={displayedText} name={currentDialogue.characterName} isTyping={isTyping} 
+                        onAdvance={handleAdvance} onTermClick={handleTermClick} settings={settings}
                     />
-
-                    {isWaitingForChoice && isTextFinished && (
-                        <ChoiceMenu choices={scene.choices} onSelect={handleChoice} />
-                    )}
+                    {isWaitingForChoice && isTextFinished && <ChoiceMenu choices={scene.choices} onSelect={handleChoice} />}
                 </>
             )}
 
-            <InGameMenu 
-                isOpen={showMenu}
-                onClose={() => setShowMenu(false)}
-                onSave={() => setSaveMode('save')}
-                onLoad={() => setSaveMode('load')}
-                onSettings={() => setShowSettings(true)}
-                onExit={onExit}
+            {/* Overlays & Modals */}
+            {activeTerm && <GlossaryPopup entry={activeTerm} onClose={() => setActiveTerm(null)} />}
+
+            {showMenu && (
+                <GameMenuOverlay 
+                    onClose={() => setShowMenu(false)}
+                    onSave={() => { setSaveMode('save'); setShowMenu(false); }}
+                    onLoad={() => { setSaveMode('load'); setShowMenu(false); }}
+                    onSettings={() => { setShowSettings(true); setShowMenu(false); }}
+                    onExit={onExit}
+                />
+            )}
+
+            {showHistory && (
+                <HistoryOverlay 
+                    history={history} 
+                    onClose={() => setShowHistory(false)} 
+                    onJump={handleJumpToHistory}
+                />
+            )}
+
+            <SettingsModal 
+                isOpen={showSettings} 
+                onClose={() => setShowSettings(false)} 
+                settings={settings} 
+                onUpdateSettings={(s) => { onSettingsChange(s); saveSettings(s); }} 
             />
 
-            {/* Glossary Modal */}
-            {activeGlossary && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-gray-900 border border-blue-500/50 p-6 rounded-lg max-w-sm w-full shadow-2xl relative animate-in zoom-in-95 duration-200">
-                        <button 
-                            onClick={() => setActiveGlossary(null)} 
-                            className="absolute top-2 right-2 text-gray-400 hover:text-white"
-                        >
-                            <X size={20} />
-                        </button>
-                        <h3 className="text-lg font-bold text-blue-400 mb-2 border-b border-gray-700 pb-2 flex items-center gap-2">
-                             <HelpCircle size={18}/> {activeGlossary.term}
-                        </h3>
-                        <p className="text-gray-200 leading-relaxed text-sm whitespace-pre-line">
-                            {activeGlossary.note}
-                        </p>
-                    </div>
-                </div>
-            )}
-
-            {/* History Modal (Only needed for VN mode usually, but kept accessible in Scroll Mode too via button) */}
-            {showHistory && (
-                <div className="fixed inset-0 z-50 bg-black/95 flex flex-col p-8 animate-in slide-in-from-right-10">
-                    <div className="max-w-4xl mx-auto w-full flex flex-col h-full">
-                        <div className="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
-                            <h2 className="text-2xl font-bold text-gray-200 flex gap-2"><History/> Nhật ký thoại</h2>
-                            <button onClick={() => setShowHistory(false)} className="p-2 hover:bg-gray-800 rounded-full"><X className="text-gray-400"/></button>
-                        </div>
-                        <div className="flex-1 overflow-y-auto space-y-6 pr-4 custom-scrollbar">
-                            {history.length === 0 && <div className="text-gray-500 italic text-center mt-20">Trang nhật ký còn trống.</div>}
-                            {history.map((h, i) => (
-                                <div key={i} className="flex flex-col gap-1 group relative pl-2 border-l-2 border-transparent hover:border-blue-800/50 transition-colors">
-                                    {h.type === 'choice' ? (
-                                        <div className="text-yellow-500 italic text-sm self-center my-2 border border-yellow-500/30 px-4 py-1 rounded-full bg-yellow-500/10">
-                                            Đã chọn: {h.text}
-                                        </div>
-                                    ) : (
-                                        <div className="flex justify-between items-start gap-4">
-                                            <div className="flex-1" onClick={handleContentClick}>
-                                                {h.characterName && <div className="text-blue-400 font-bold text-sm">{h.characterName}</div>}
-                                                {/* Enable Glossary Clicks in History too */}
-                                                <div 
-                                                    className="text-gray-300 bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:bg-gray-800/80 transition-colors" 
-                                                    dangerouslySetInnerHTML={{__html: h.text}}
-                                                />
-                                            </div>
-                                            
-                                            {/* Jump Button */}
-                                            {h.sceneId && (
-                                                <button 
-                                                    onClick={() => jumpToHistory(h)}
-                                                    className="opacity-0 group-hover:opacity-100 p-2 text-gray-500 hover:text-blue-400 hover:bg-blue-500/10 rounded-full transition-all"
-                                                    title="Quay lại thời điểm này"
-                                                >
-                                                    <RotateCcw size={18} />
-                                                </button>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} settings={settings} onUpdateSettings={(s) => { onSettingsChange(s); saveSettings(s); }} />
-            
             {saveMode && (
                 <SaveLoadModal 
                     isOpen={true} 
                     mode={saveMode} 
                     onClose={() => setSaveMode(null)} 
                     currentStory={story} 
-                    currentSceneId={sceneId}
-                    extraSaveData={{ currentDialogueIndex: dialogueIndex, history }}
-                    onLoadGame={handleLoadGame}
+                    currentSceneId={sceneId} 
+                    extraSaveData={{ currentDialogueIndex: dialogueIndex, history }} 
+                    onLoadGame={(s) => { 
+                        setSceneId(s.currentSceneId); 
+                        setDialogueIndex(s.currentDialogueIndex || 0); 
+                        setHistory(s.history || []); 
+                        setSaveMode(null); 
+                    }} 
                 />
             )}
         </div>
