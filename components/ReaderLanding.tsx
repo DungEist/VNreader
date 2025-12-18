@@ -284,7 +284,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">VN Reader</span>
               </div>
               <p className="text-gray-700 text-[10px] font-bold uppercase tracking-widest text-center md:text-left">
-                  © 2025 Developed for the ultimate visual novel experience.
+                  © 2025 Developed for Project Graven.
               </p>
               <div className="flex gap-8 text-[10px] font-black text-gray-500 uppercase tracking-widest">
                   <a 
