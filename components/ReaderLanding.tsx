@@ -74,7 +74,7 @@ const ReaderLanding: React.FC<ReaderLandingProps> = ({ onLoadStory, cachedStory,
            </div>
            <div>
               <h1 className="text-xl font-bold tracking-tight">VN Reader</h1>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Premium Reading Experience</p>
+              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Graven project</p>
            </div>
         </div>
 
