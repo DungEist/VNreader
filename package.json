@@ -1,6 +1,7 @@
 {
   "name": "pgr-reader",
   "private": true,
+  "author": "tsied <yoruseeker235@gmail.com>",
   "version": "0.0.0",
   "type": "module",
   "main": "electron/main.cjs",
@@ -10,7 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "electron": "electron .",
-    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5174 && electron .\""
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5174 && electron .\"",
+    "build:all": "(mv public/pgr_assets public/pgr_audio public/pgr_data public/wiki_db.json ../ || true) && npm run build && (electron-builder --win --mac --linux ; mv ../pgr_assets ../pgr_audio ../pgr_data ../wiki_db.json public/)"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -41,8 +43,26 @@
     "files": [
       "dist/**/*",
       "electron/**/*",
-      "package.json"
+      "package.json",
+      "!public",
+      "!public/**/*",
+      "!scratch",
+      "!scratch/**/*",
+      "!dist-electron",
+      "!dist-electron/**/*",
+      "!*.js"
     ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "mac": {
+      "target": [
+        "zip"
+      ]
+    },
     "linux": {
       "target": [
         "AppImage",
