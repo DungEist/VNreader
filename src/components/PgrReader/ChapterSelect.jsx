@@ -208,19 +208,36 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
   );
 
   if (isLoading) return (
-    <div className="hs-loading">
-      <RefreshCw className="hs-loading-icon" />
-      <p>Synchronizing MIND Database...</p>
+    <div className="hs-root">
+      <div className="hs-header">
+        <div className="hs-header-left">
+          <div className="hs-breadcrumb">
+            <span className="hs-bc-current">⚙ Synchronizing MIND Database...</span>
+          </div>
+        </div>
+      </div>
+      <div className="hs-content">
+        <div className="hs-categories-grid">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <div key={i} className="hs-cat-card hs-skeleton" style={{ animationDelay: `${i * 0.04}s` }} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 
   // ── Category Grid ─────────────────────────────────────────────────────────
   const CategoriesView = () => (
-    <div className="hs-categories-grid">
-      {WIKI_CATEGORIES.map(cat => {
+    <div className="hs-categories-grid" key="cat-view">
+      {WIKI_CATEGORIES.map((cat, i) => {
         const count = categoryCounts[cat.key] || 0;
         return (
-          <button key={cat.id} className="hs-cat-card" onClick={() => goCategory(cat)}>
+          <button
+            key={cat.id}
+            className="hs-cat-card card-stagger"
+            style={{ animationDelay: `${i * 0.055}s` }}
+            onClick={() => goCategory(cat)}
+          >
             <img src={resolveAssetPath(cat.bg)} alt={cat.name} className="hs-cat-bg" loading="lazy" />
             <div className="hs-cat-overlay" />
             <div className="hs-cat-info">

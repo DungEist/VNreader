@@ -1,0 +1,246 @@
+/* ==========================================================================
+   DYNAMIC ANIMATION SYSTEM
+   Page transitions, stagger, skeleton, micro-interactions
+   ========================================================================== */
+
+:root {
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 180ms;
+  --t-med:  320ms;
+  --t-slow: 520ms;
+  --accent-gold: #ffd700;
+}
+
+/* ── View Frame & Page Transitions ─────────────────────────────── */
+.pgr-reader-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.view-frame {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  will-change: transform, opacity;
+}
+
+.view-enter-left  { animation: slideFromLeft  var(--t-med) var(--ease-out) forwards; }
+.view-enter-right { animation: slideFromRight var(--t-med) var(--ease-out) forwards; }
+.view-enter-up    { animation: slideFromDown  var(--t-med) var(--ease-out) forwards; }
+.view-exit        { animation: fadeOut var(--t-fast) linear forwards !important; pointer-events: none; }
+
+@keyframes slideFromLeft  {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromDown {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ── Staggered Card Animation ──────────────────────────────────── */
+.card-stagger {
+  opacity: 0;
+  animation: fadeSlideUp var(--t-med) var(--ease-out) forwards;
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Skeleton Shimmer ──────────────────────────────────────────── */
+.hs-skeleton {
+  background: linear-gradient(90deg, #0e1525 25%, #151e33 50%, #0e1525 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite, fadeSlideUp var(--t-med) var(--ease-out) forwards;
+  pointer-events: none;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── VN Scanline Overlay ───────────────────────────────────────── */
+.pgr-vn-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 999;
+  animation: scanlineDrift 10s linear infinite;
+}
+@keyframes scanlineDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 40px; }
+}
+
+/* ── Dialogue Box Entrance ─────────────────────────────────────── */
+.vn-dialogue-box {
+  animation: dialogueFadeIn 0.28s var(--ease-out);
+}
+@keyframes dialogueFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Speaker Badge Slide ───────────────────────────────────────── */
+.vn-speaker-badge {
+  animation: speakerIn 0.22s var(--ease-spring);
+}
+@keyframes speakerIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Choice Buttons Stagger ────────────────────────────────────── */
+.pgr-vn-choice-btn {
+  opacity: 0;
+  animation: fadeSlideUp 0.3s var(--ease-out) forwards;
+}
+.pgr-vn-choice-btn:nth-child(1) { animation-delay: 0.00s; }
+.pgr-vn-choice-btn:nth-child(2) { animation-delay: 0.08s; }
+.pgr-vn-choice-btn:nth-child(3) { animation-delay: 0.16s; }
+
+/* ── Loading Text Pulse ────────────────────────────────────────── */
+.vn-loading-screen p,
+.hs-loading p {
+  animation: pulseOpacity 1.6s ease-in-out infinite;
+}
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ── Modal Pop ─────────────────────────────────────────────────── */
+.vn-modal-container {
+  animation: popIn 0.28s var(--ease-spring);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Button Ripple ─────────────────────────────────────────────── */
+.hs-play-btn,
+.completed-btn {
+  position: relative;
+  overflow: hidden;
+}
+.hs-play-btn::after,
+.completed-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.hs-play-btn:hover::after,
+.completed-btn:hover::after {
+  opacity: 1;
+}
+
+/* ── Stage Row Hover Slide ─────────────────────────────────────── */
+.hs-stage-row {
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+              transform 0.2s var(--ease-out) !important;
+}
+.hs-stage-row:hover {
+  transform: translateX(5px) !important;
+}
+
+/* ── Card Spring Hover ─────────────────────────────────────────── */
+.hs-cat-card {
+  transition: transform 0.3s var(--ease-spring),
+              border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.hs-cat-card:hover {
+  transform: scale(1.04) translateY(-3px) !important;
+}
+.hs-chapter-card {
+  transition: transform 0.3s var(--ease-spring),
+              border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+.hs-chapter-card:hover {
+  transform: scale(1.05) translateY(-4px) !important;
+}
+
+/* ── Settings Gear Spin ────────────────────────────────────────── */
+.hs-settings-btn {
+  transition: background 0.2s, border-color 0.2s,
+              transform 0.3s var(--ease-spring) !important;
+}
+.hs-settings-btn:hover {
+  transform: rotate(90deg) scale(1.12) !important;
+}
+
+/* ── Back Button Bounce ────────────────────────────────────────── */
+@keyframes backBounce {
+  0%   { transform: translateX(0); }
+  40%  { transform: translateX(-5px); }
+  70%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+.hs-back-btn:hover {
+  animation: backBounce 0.4s var(--ease-spring);
+}
+
+/* ── Search Input Expand ───────────────────────────────────────── */
+.hs-search-input {
+  transition: border-color 0.2s ease, box-shadow 0.3s ease,
+              width 0.35s var(--ease-out) !important;
+}
+.hs-search-input:focus {
+  width: 380px !important;
+}
+
+/* ── Voice Lang Button ─────────────────────────────────────────── */
+.hs-voice-lang-btn {
+  transition: all 0.2s var(--ease-spring) !important;
+}
+.hs-voice-lang-btn:hover {
+  transform: translateY(-2px) scale(1.06) !important;
+}
+.hs-voice-lang-btn.active {
+  animation: activePulse 2.5s ease-in-out infinite;
+}
+@keyframes activePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+  50%       { box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.15); }
+}
+
+/* ── Character Slot Slide-Up ───────────────────────────────────── */
+.pgr-vn-slot-container {
+  animation: charSlideUp 0.4s var(--ease-out);
+}
+@keyframes charSlideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Breadcrumb header sync height ─────────────────────────────── */
+.hs-bc-current {
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
