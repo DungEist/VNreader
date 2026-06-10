@@ -22,6 +22,14 @@ const resolveAssetPath = (path) => {
   return path;
 };
 
+const resolveWikiUrl = (subpath) => {
+  const isElectron = typeof window !== 'undefined' && window.electronAPI && window.electronAPI.isElectron();
+  if (isElectron) {
+    return `https://huaxu.app${subpath}`;
+  }
+  return subpath;
+};
+
 const voiceFolderMap = {
   'v215alpha': 'v_luciaalpha',
   'v211lamiya': 'v_lamiya',
@@ -506,7 +514,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
 
         // Resolve dynamic BGM/SFX mappings from huaxu.app
         try {
-          const wikiDbRes = await fetch('/wiki_db.json');
+          const wikiDbRes = await fetch('./wiki_db.json');
           const wikiDb = await wikiDbRes.json();
           
           const normalizeId = (id) => id.toUpperCase().replace(/^HD/, 'ZX');
@@ -526,7 +534,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
           if (stageEntry && matchedWikiStoryId) {
             const catId = stageEntry.category;
             const chapterId = stageEntry.chapterId;
-            const wikiUrl = `/ap/wiki/stories/${catId}/${chapterId}/${matchedWikiStoryId.toLowerCase()}`;
+            const wikiUrl = resolveWikiUrl(`/ap/wiki/stories/${catId}/${chapterId}/${matchedWikiStoryId.toLowerCase()}`);
             
             console.log('Fetching dynamic audio map from proxied wiki URL:', wikiUrl);
             const wikiRes = await fetch(wikiUrl);
