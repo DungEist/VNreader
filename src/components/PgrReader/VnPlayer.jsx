@@ -5,30 +5,9 @@ import { BookOpen, ArrowLeft, Play, FastForward, List, Bookmark, RefreshCw, Volu
 import { parseRichTextToSegments } from './richTextParser';
 import audioMapData from './audio_map.json';
 
-const resolveAssetPath = (path) => {
-  if (!path) return '';
-  const isElectron = typeof window !== 'undefined' && window.electronAPI && window.electronAPI.isElectron();
-  if (isElectron) {
-    if (path.startsWith('/pgr_data/')) {
-      return `pgr-asset://data/${path.slice(10)}`;
-    }
-    if (path.startsWith('/pgr_audio/')) {
-      return `pgr-asset://audio/${path.slice(11)}`;
-    }
-    if (path.startsWith('/pgr_assets/')) {
-      return `pgr-asset://assets/${path.slice(12)}`;
-    }
-  }
-  return path;
-};
+const resolveAssetPath = (path) => path || '';
 
-const resolveWikiUrl = (subpath) => {
-  const isElectron = typeof window !== 'undefined' && window.electronAPI && window.electronAPI.isElectron();
-  if (isElectron) {
-    return `https://huaxu.app${subpath}`;
-  }
-  return subpath;
-};
+const resolveWikiUrl = (subpath) => subpath;
 
 const voiceFolderMap = {
   'v215alpha': 'v_luciaalpha',

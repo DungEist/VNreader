@@ -30,22 +30,7 @@ const WIKI_CATEGORIES = [
   { id: 1000, name: 'Affection',               key: 'Affection',                    bg: '/pgr_assets/product/texture/image/rolecharacter/roleheadr7luxiya1.webp' },
 ];
 
-const resolveAssetPath = (path) => {
-  if (!path) return '';
-  const isElectron = typeof window !== 'undefined' && window.electronAPI && window.electronAPI.isElectron();
-  if (isElectron) {
-    if (path.startsWith('/pgr_data/')) {
-      return `pgr-asset://data/${path.slice(10)}`;
-    }
-    if (path.startsWith('/pgr_audio/')) {
-      return `pgr-asset://audio/${path.slice(11)}`;
-    }
-    if (path.startsWith('/pgr_assets/')) {
-      return `pgr-asset://assets/${path.slice(12)}`;
-    }
-  }
-  return path;
-};
+const resolveAssetPath = (path) => path || '';
 
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
 
