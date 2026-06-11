@@ -33,7 +33,7 @@ const WIKI_CATEGORIES = [
 const resolveAssetPath = (path) => path || '';
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
 
-export default function ChapterSelect({ onStartStory, onOpenSettings, onNavChange, initialCategory = null, initialChapter = '' }) {
+export default function ChapterSelect({ onStartStory, onOpenSettings, initialCategory = null, initialChapter = '' }) {
   const [view, setView]                     = useState(() => initialCategory && initialChapter ? VIEW.STAGES : initialCategory ? VIEW.CHAPTERS : VIEW.CATEGORIES);
   const [allItems, setAllItems]             = useState([]);
   const [chapterMeta, setChapterMeta]       = useState({});
@@ -132,22 +132,11 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, onNavChang
     return counts;
   }, [allItems]);
 
-  const goCategory = (cat) => {
-    setActiveCategory(cat); setActiveChapter(''); setView(VIEW.CHAPTERS);
-    onNavChange?.(cat, '');
-  };
-  const goChapter = (ch) => {
-    setActiveChapter(ch.storylineKey); setView(VIEW.STAGES);
-    onNavChange?.(activeCategory, ch.storylineKey);
-  };
-  const goBack = () => {
-    if (view === VIEW.STAGES) {
-      setActiveChapter(''); setView(VIEW.CHAPTERS);
-      onNavChange?.(activeCategory, '');
-    } else if (view === VIEW.CHAPTERS) {
-      setActiveCategory(null); setView(VIEW.CATEGORIES);
-      onNavChange?.(null, '');
-    }
+  const goCategory = (cat) => { setActiveCategory(cat); setActiveChapter(''); setView(VIEW.CHAPTERS); };
+  const goChapter  = (ch)  => { setActiveChapter(ch.storylineKey); setView(VIEW.STAGES); };
+  const goBack     = () => {
+    if (view === VIEW.STAGES)        { setActiveChapter(''); setView(VIEW.CHAPTERS); }
+    else if (view === VIEW.CHAPTERS) { setActiveCategory(null); setView(VIEW.CATEGORIES); }
   };
 
   const isSearch = searchQuery.trim().length > 0;
@@ -322,7 +311,7 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, onNavChang
         </div>
 
         {/* Settings */}
-        <button className="cs2-settings-btn hs-settings-btn" onClick={onOpenSettings} title="Settings">
+        <button className="cs2-settings-btn hs-settings-btn" onClick={() => onOpenSettings(activeCategory, activeChapter)} title="Settings">
           <Settings size={16} />
         </button>
       </div>

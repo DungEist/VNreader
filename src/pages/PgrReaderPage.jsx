@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import ChapterSelect from '../components/PgrReader/ChapterSelect';
 import VnPlayer from '../components/PgrReader/VnPlayer';
 import SettingsPage from '../components/PgrReader/SettingsPage';
@@ -16,15 +16,9 @@ export default function PgrReaderPage() {
     () => localStorage.getItem('pgr_voice_lang') || 'ja'
   );
 
-  // Persist ChapterSelect nav state across view switches (play/settings → back)
+  // Preserve ChapterSelect navigation state so Exit returns to stage list
   const [savedCategory, setSavedCategory] = useState(null);
   const [savedChapter, setSavedChapter]   = useState('');
-
-  // ChapterSelect calls this whenever it navigates internally
-  const handleNavChange = useCallback((category, chapter) => {
-    setSavedCategory(category);
-    setSavedChapter(chapter ?? '');
-  }, []);
 
   const getSlideDir = (from, to) => {
     const fi = VIEWS.indexOf(from);
@@ -45,16 +39,19 @@ export default function PgrReaderPage() {
     }, 220);
   };
 
+  // ChapterSelect calls this with navigation context when starting a story
   const handleStartStory = (storyId, lang, category = null, chapter = '') => {
-    // Also save context when Play is pressed (category/chapter may not have been
-    // reported via onNavChange yet if user clicked Play on the same render cycle)
     if (category !== null) setSavedCategory(category);
     if (chapter)           setSavedChapter(chapter);
     navigateTo('play', storyId, lang);
   };
 
   const handleBackToSelect = () => navigateTo('select');
-  const handleOpenSettings  = () => navigateTo('settings');
+  const handleOpenSettings  = (category = null, chapter = '') => {
+    setSavedCategory(category);
+    setSavedChapter(chapter);
+    navigateTo('settings');
+  };
 
   const slideDir = getSlideDir(prevView, activeView);
 
@@ -68,7 +65,6 @@ export default function PgrReaderPage() {
           <ChapterSelect
             onStartStory={handleStartStory}
             onOpenSettings={handleOpenSettings}
-            onNavChange={handleNavChange}
             initialCategory={savedCategory}
             initialChapter={savedChapter}
           />
