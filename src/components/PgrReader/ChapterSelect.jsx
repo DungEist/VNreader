@@ -33,15 +33,15 @@ const WIKI_CATEGORIES = [
 const resolveAssetPath = (path) => path || '';
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
 
-export default function ChapterSelect({ onStartStory, onOpenSettings }) {
-  const [view, setView]                     = useState(VIEW.CATEGORIES);
+export default function ChapterSelect({ onStartStory, onOpenSettings, initialCategory = null, initialChapter = '' }) {
+  const [view, setView]                     = useState(() => initialCategory && initialChapter ? VIEW.STAGES : initialCategory ? VIEW.CHAPTERS : VIEW.CATEGORIES);
   const [allItems, setAllItems]             = useState([]);
   const [chapterMeta, setChapterMeta]       = useState({});
   const [isLoading, setIsLoading]           = useState(true);
   const [searchQuery, setSearchQuery]       = useState('');
   const [searchOpen, setSearchOpen]         = useState(false);
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [activeChapter, setActiveChapter]   = useState('');
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [activeChapter, setActiveChapter]   = useState(initialChapter);
   const [voiceLang, setVoiceLang]           = useState(() => localStorage.getItem(STORAGE_KEY) || 'ja');
   const [playerName, setPlayerName]         = useState(() => localStorage.getItem('pgr_player_name') || 'Commandant');
   const searchRef = useRef(null);
@@ -238,7 +238,7 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
             <div className="cs2-stage-name">{item.stageName}</div>
             {item.summary && <p className="cs2-stage-summary">{item.summary}</p>}
           </div>
-          <button className="cs2-play-btn" onClick={() => onStartStory(item.storyId, voiceLang)}>
+          <button className="cs2-play-btn" onClick={() => onStartStory(item.storyId, voiceLang, activeCategory, activeChapter)}>
             <Play size={15} fill="currentColor" />
             <span>Play</span>
           </button>
@@ -264,7 +264,7 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
             <div className="cs2-stage-name">{item.stageName}</div>
             {item.summary && <p className="cs2-stage-summary">{item.summary}</p>}
           </div>
-          <button className="cs2-play-btn" onClick={() => onStartStory(item.storyId, voiceLang)}>
+          <button className="cs2-play-btn" onClick={() => onStartStory(item.storyId, voiceLang, activeCategory, activeChapter)}>
             <Play size={15} fill="currentColor" /><span>Play</span>
           </button>
         </div>

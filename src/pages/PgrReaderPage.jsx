@@ -16,7 +16,10 @@ export default function PgrReaderPage() {
     () => localStorage.getItem('pgr_voice_lang') || 'ja'
   );
 
-  // Slide direction based on view order
+  // Preserve ChapterSelect navigation state so Exit returns to stage list
+  const [savedCategory, setSavedCategory] = useState(null);
+  const [savedChapter, setSavedChapter]   = useState('');
+
   const getSlideDir = (from, to) => {
     const fi = VIEWS.indexOf(from);
     const ti = VIEWS.indexOf(to);
@@ -36,9 +39,15 @@ export default function PgrReaderPage() {
     }, 220);
   };
 
-  const handleStartStory  = (storyId, lang) => navigateTo('play', storyId, lang);
-  const handleBackToSelect = ()              => navigateTo('select');
-  const handleOpenSettings = ()             => navigateTo('settings');
+  // ChapterSelect calls this with navigation context when starting a story
+  const handleStartStory = (storyId, lang, category = null, chapter = '') => {
+    if (category !== null) setSavedCategory(category);
+    if (chapter)           setSavedChapter(chapter);
+    navigateTo('play', storyId, lang);
+  };
+
+  const handleBackToSelect = () => navigateTo('select');
+  const handleOpenSettings  = () => navigateTo('settings');
 
   const slideDir = getSlideDir(prevView, activeView);
 
@@ -52,13 +61,15 @@ export default function PgrReaderPage() {
           <ChapterSelect
             onStartStory={handleStartStory}
             onOpenSettings={handleOpenSettings}
+            initialCategory={savedCategory}
+            initialChapter={savedChapter}
           />
         )}
         {activeView === 'play' && (
           <VnPlayer
             storyId={activeStoryId}
             onBack={handleBackToSelect}
-            onNextStory={handleStartStory}
+            onNextStory={(storyId, lang) => handleStartStory(storyId, lang)}
             initialLang={activeLang}
           />
         )}
