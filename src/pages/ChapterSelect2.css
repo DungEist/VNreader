@@ -313,9 +313,8 @@
               box-shadow 0.3s ease;
 }
 .cs2-cat-card:hover {
-  transform: translateY(-4px) scale(1.02);
   border-color: var(--card-accent, #00d2ff);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--card-accent, #00d2ff), inset 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--card-accent, #00d2ff), inset 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .cs2-cat-img {
@@ -329,7 +328,6 @@
   opacity: 0.65;
 }
 .cs2-cat-card:hover .cs2-cat-img {
-  transform: scale(1.08);
   opacity: 0.8;
 }
 
@@ -344,13 +342,6 @@
   );
 }
 
-.cs2-cat-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 .cs2-cat-card:hover .cs2-cat-shine { opacity: 1; }
 
 .cs2-cat-body {
@@ -436,9 +427,8 @@
               border-color 0.25s ease, box-shadow 0.3s ease;
 }
 .cs2-chap-card:hover {
-  transform: translateY(-5px) scale(1.03);
   border-color: var(--card-accent, #00d2ff);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px var(--card-accent, #00d2ff);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--card-accent, #00d2ff);
 }
 
 .cs2-chap-img {
@@ -450,7 +440,7 @@
   opacity: 0.7;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
-.cs2-chap-card:hover .cs2-chap-img { transform: scale(1.08); opacity: 0.85; }
+.cs2-chap-card:hover .cs2-chap-img { opacity: 0.85; }
 
 .cs2-chap-gradient {
   position: absolute;
@@ -517,7 +507,6 @@
 .cs2-stage-row:hover {
   background: rgba(14, 21, 37, 0.9);
   border-color: rgba(255, 255, 255, 0.12);
-  transform: translateX(6px);
 }
 .cs2-stage-row:hover::before { opacity: 1; }
 

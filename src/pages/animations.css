@@ -158,30 +158,15 @@
   opacity: 1;
 }
 
-/* ── Stage Row Hover Slide ─────────────────────────────────────── */
-.hs-stage-row {
-  transition: border-color 0.2s ease, background-color 0.2s ease,
-              transform 0.2s var(--ease-out) !important;
-}
-.hs-stage-row:hover {
-  transform: translateX(5px) !important;
-}
+/* ── Stage Row Hover Slide ───────────────────────────────────────/* Stage row hover - border/bg only, no movement */
+.hs-stage-row { transition: border-color 0.2s ease, background-color 0.2s ease !important; }
+.hs-stage-row:hover { }
 
-/* ── Card Spring Hover ─────────────────────────────────────────── */
-.hs-cat-card {
-  transition: transform 0.3s var(--ease-spring),
-              border-color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.hs-cat-card:hover {
-  transform: scale(1.04) translateY(-3px) !important;
-}
-.hs-chapter-card {
-  transition: transform 0.3s var(--ease-spring),
-              border-color 0.25s ease, box-shadow 0.25s ease !important;
-}
-.hs-chapter-card:hover {
-  transform: scale(1.05) translateY(-4px) !important;
-}
+/* ── Card Spring Hover ───────────────────────────────────────────/* Card spring hover - border/shadow only, no transform */
+.hs-cat-card { transition: border-color 0.25s ease, box-shadow 0.25s ease !important; }
+.hs-cat-card:hover { }
+.hs-chapter-card { transition: border-color 0.25s ease, box-shadow 0.25s ease !important; }
+.hs-chapter-card:hover { }
 
 /* ── Settings Gear Spin ────────────────────────────────────────── */
 .hs-settings-btn {
@@ -199,9 +184,9 @@
   70%  { transform: translateX(2px); }
   100% { transform: translateX(0); }
 }
-.hs-back-btn:hover {
-  animation: backBounce 0.4s var(--ease-spring);
-}
+/* Back button - no bounce */
+.hs-back-btn { transition: border-color 0.2s ease, color 0.2s ease !important; }
+.hs-back-btn:hover { }
 
 /* ── Search Input Expand ───────────────────────────────────────── */
 .hs-search-input {

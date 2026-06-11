@@ -185,12 +185,10 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
             <div className="cs2-cat-gradient" />
             <div className="cs2-cat-shine" />
             <div className="cs2-cat-body">
-              <div className="cs2-cat-icon">{cat.icon}</div>
               <div className="cs2-cat-info">
                 <span className="cs2-cat-name">{cat.name}</span>
                 {count > 0 && <span className="cs2-cat-count">{count} stories</span>}
               </div>
-              <div className="cs2-cat-arrow"><ChevronRight size={16} /></div>
             </div>
             <div className="cs2-cat-accent-line" />
           </button>
