@@ -282,21 +282,6 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
           <span>STORY ARCHIVE</span>
         </div>
 
-        {/* Voice Lang Pills */}
-        <div className="cs2-lang-row">
-          {VOICE_LANGS.map(lang => (
-            <button
-              key={lang.code}
-              className={`cs2-lang-btn ${voiceLang === lang.code ? 'active' : ''}`}
-              onClick={() => handleLangChange(lang.code)}
-              title={lang.full}
-            >
-              <span>{lang.flag}</span>
-              <span>{lang.label}</span>
-            </button>
-          ))}
-        </div>
-
         {/* Commandant Name */}
         <div className="cs2-name-wrap">
           <span className="cs2-name-label">🎖</span>

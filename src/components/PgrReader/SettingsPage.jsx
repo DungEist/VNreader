@@ -1,31 +1,45 @@
 import { useState } from 'react';
-import { ChevronLeft, Settings, Volume2 } from 'lucide-react';
+import { ChevronLeft, Settings, Volume2, Zap } from 'lucide-react';
+import '../../pages/ChapterSelect2.css';
 
 export default function SettingsPage({ onBack }) {
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('pgr_player_name') || 'Commandant');
-  const [voiceLang, setVoiceLang] = useState(() => localStorage.getItem('pgr_voice_lang') || 'ja');
-
-  const handleSave = () => {
-    localStorage.setItem('pgr_player_name', playerName);
-    localStorage.setItem('pgr_voice_lang', voiceLang);
-  };
+  const [voiceLang, setVoiceLang]   = useState(() => localStorage.getItem('pgr_voice_lang') || 'ja');
 
   return (
-    <div className="hs-root">
-      <div className="hs-header">
-        <div className="hs-header-left">
-          <button className="hs-back-btn" onClick={onBack}>
-            <ChevronLeft size={18} />
-            <span>Archives</span>
-          </button>
-          <div className="hs-breadcrumb">
-            <span className="hs-bc-current">🎖 Settings</span>
-          </div>
+    <div className="cs2-root">
+      {/* ── Top Bar ──────────────────────────────────────────────────── */}
+      <div className="cs2-topbar">
+        <button className="cs2-back-btn" onClick={onBack} title="Back to Archives">
+          <ChevronLeft size={18} />
+        </button>
+        <div className="cs2-logo">
+          <Zap size={16} className="cs2-logo-icon" />
+          <span>STORY ARCHIVE</span>
         </div>
       </div>
 
-      <div className="hs-content hs-settings-container">
-        <div className="hs-settings-left-col" style={{ maxWidth: '520px', margin: '0 auto' }}>
+      {/* ── Hero Strip ───────────────────────────────────────────────── */}
+      <div className="cs2-hero">
+        <div className="cs2-hero-bg" />
+        <div className="cs2-hero-content">
+          <div className="cs2-breadcrumb">
+            <button className="cs2-bc-btn" onClick={onBack}>
+              <ChevronLeft size={13} /><span>Archives</span>
+            </button>
+            <span className="cs2-bc-sep">›</span>
+            <span className="cs2-bc-current">Settings</span>
+          </div>
+          <div className="cs2-hero-title-row">
+            <h1 className="cs2-page-title">SETTINGS</h1>
+          </div>
+        </div>
+        <div className="cs2-hero-line" style={{ background: 'linear-gradient(to right, #00d2ff, transparent)' }} />
+      </div>
+
+      {/* ── Content ──────────────────────────────────────────────────── */}
+      <div className="cs2-body">
+        <div style={{ maxWidth: '520px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
 
           {/* Player Settings */}
           <div className="hs-settings-section">
@@ -52,7 +66,6 @@ export default function SettingsPage({ onBack }) {
                 onChange={(e) => {
                   setVoiceLang(e.target.value);
                   localStorage.setItem('pgr_voice_lang', e.target.value);
-                  handleSave();
                 }}
               >
                 <option value="ja">🇯🇵 JP (Japanese)</option>
@@ -63,7 +76,7 @@ export default function SettingsPage({ onBack }) {
             </div>
           </div>
 
-          {/* About section */}
+          {/* About */}
           <div className="hs-settings-section">
             <h3 className="hs-settings-title"><Volume2 size={16} /> About VnReader</h3>
             <p className="hs-section-desc">
