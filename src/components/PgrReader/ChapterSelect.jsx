@@ -42,7 +42,6 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
   const [searchOpen, setSearchOpen]         = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeChapter, setActiveChapter]   = useState('');
-  const [hoveredCard, setHoveredCard]       = useState(null);
   const [voiceLang, setVoiceLang]           = useState(() => localStorage.getItem(STORAGE_KEY) || 'ja');
   const [playerName, setPlayerName]         = useState(() => localStorage.getItem('pgr_player_name') || 'Commandant');
   const searchRef = useRef(null);
@@ -178,8 +177,6 @@ export default function ChapterSelect({ onStartStory, onOpenSettings }) {
             className="cs2-cat-card card-stagger"
             style={{ animationDelay: `${i * 0.05}s`, '--card-accent': cat.accent }}
             onClick={() => goCategory(cat)}
-            onMouseEnter={() => setHoveredCard(cat.id)}
-            onMouseLeave={() => setHoveredCard(null)}
           >
             <img src={resolveAssetPath(cat.bg)} alt={cat.name} className="cs2-cat-img" loading="lazy" />
             <div className="cs2-cat-gradient" />
