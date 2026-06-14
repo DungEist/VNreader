@@ -203,6 +203,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
   const [isMuted, setIsMuted] = useState(false);
   const [wikiVoiceMap, setWikiVoiceMap] = useState({}); // actionId -> direct voice audio path from wiki
   const [wikiBgMap, setWikiBgMap]       = useState({}); // actionId -> background image path from wiki
+  const [wikiVideoMap, setWikiVideoMap] = useState({}); // actionId -> dynamic video URLs from wiki
   
   const voiceAudioRef = useRef(null);
   const bgmAudioRef = useRef(null);
@@ -507,6 +508,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
         setHistory([]);
         setWikiVoiceMap({});
         setWikiBgMap({});
+        setWikiVideoMap({});
 
         // Resolve dynamic BGM/SFX mappings from huaxu.app
         try {
@@ -558,6 +560,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
                   const newSfxMap   = {};
                   const newVoiceMap = {}; // actionId -> voice path
                   const newBgMap    = {}; // actionId -> bg image path
+                  const newVideoMap = {}; // actionId -> dynamic video URLs from wiki
 
                   actions.forEach(wikiAct => {
                     if (wikiAct.type === 'SoundPlay') {
@@ -591,13 +594,29 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
                       const imgPath = `product/texture/${wikiAct.image}.webp`;
                       newBgMap[wikiAct.actionId] = resolveAssetPath(`/pgr_assets/${imgPath}`);
                     }
+                    // Map VideoPlay: wiki has exact video path per actionId
+                    else if (wikiAct.type === 'VideoPlay') {
+                      const urls = [];
+                      if (wikiAct.videoPc) {
+                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.videoPc}pcen.mp4`);
+                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.videoPc}.mp4`);
+                      }
+                      if (wikiAct.video) {
+                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.video}pcen.mp4`);
+                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.video}.mp4`);
+                      }
+                      if (urls.length > 0) {
+                        newVideoMap[wikiAct.actionId] = urls;
+                      }
+                    }
                   });
 
-                  console.log(`Dynamically mapped ${Object.keys(newBgmMap).length} BGMs, ${Object.keys(newSfxMap).length} SFXs, ${Object.keys(newVoiceMap).length} voices, ${Object.keys(newBgMap).length} BgSwitch`);
+                  console.log(`Dynamically mapped ${Object.keys(newBgmMap).length} BGMs, ${Object.keys(newSfxMap).length} SFXs, ${Object.keys(newVoiceMap).length} voices, ${Object.keys(newBgMap).length} BgSwitch, ${Object.keys(newVideoMap).length} videos`);
                   setActiveBgmMap(prev => ({ ...prev, ...newBgmMap, ...bgmMap }));
                   setActiveSfxMap(prev => ({ ...prev, ...newSfxMap }));
                   setWikiVoiceMap(newVoiceMap);
                   setWikiBgMap(newBgMap);
+                  setWikiVideoMap(newVideoMap);
                 }
               }
             }
@@ -972,31 +991,50 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
       });
     }
     else if (node.Type === 501) {
-      const prefabPath = params[1] || '';
-      if (prefabPath.toLowerCase().includes('/uimovie/') || prefabPath.toLowerCase().includes('/fxuimovie/') || prefabPath.toLowerCase().includes('uimovie')) {
+      const wikiVideoUrls = wikiVideoMap[node.ActionId];
+      if (wikiVideoUrls) {
         isBlocking = true;
         setIsPlayingVideo(true);
-        
-        // Extract filename from prefab path
-        const parts = prefabPath.split('/');
-        const filenameWithExt = parts[parts.length - 1];
-        const filename = filenameWithExt.split('.')[0].toLowerCase();
-        
-        // Construct the URL to the remote video
-        const videoSrc = `https://assets.huaxu.app/glb/video/${filename}.mp4`;
-        setVideoUrl(videoSrc);
+        setVideoUrl(wikiVideoUrls);
+      } else {
+        const prefabPath = params[1] || '';
+        if (prefabPath.toLowerCase().includes('/uimovie/') || prefabPath.toLowerCase().includes('/fxuimovie/') || prefabPath.toLowerCase().includes('uimovie')) {
+          const lowerPrefab = prefabPath.toLowerCase();
+          const isKnownUiEffect = lowerPrefab.includes('lianyi') || lowerPrefab.includes('kuaimen') || lowerPrefab.includes('mohu') || lowerPrefab.includes('fire') || lowerPrefab.includes('luochen') || lowerPrefab.includes('chenai');
+          
+          if (!isKnownUiEffect) {
+            isBlocking = true;
+            setIsPlayingVideo(true);
+            
+            // Extract filename from prefab path
+            const parts = prefabPath.split('/');
+            const filenameWithExt = parts[parts.length - 1];
+            const filename = filenameWithExt.split('.')[0].toLowerCase();
+            
+            // Construct the URL to the remote video
+            const videoSrc = `https://assets.huaxu.app/glb/video/${filename}.mp4`;
+            setVideoUrl(videoSrc);
+          }
+        }
       }
     }
     else if (node.Type === 503) {
-      const movieId = params[1];
-      if (movieId) {
+      const wikiVideoUrls = wikiVideoMap[node.ActionId];
+      if (wikiVideoUrls) {
         isBlocking = true;
         setIsPlayingVideo(true);
-        const urls = [
-          `https://assets.huaxu.app/glb/video/movie${movieId}pcen.mp4`,
-          `https://assets.huaxu.app/glb/video/movie${movieId}.mp4`
-        ];
-        setVideoUrl(urls);
+        setVideoUrl(wikiVideoUrls);
+      } else {
+        const movieId = params[1];
+        if (movieId) {
+          isBlocking = true;
+          setIsPlayingVideo(true);
+          const urls = [
+            `https://assets.huaxu.app/glb/video/movie${movieId}pcen.mp4`,
+            `https://assets.huaxu.app/glb/video/movie${movieId}.mp4`
+          ];
+          setVideoUrl(urls);
+        }
       }
     }
     else if (node.Type === 505) {
