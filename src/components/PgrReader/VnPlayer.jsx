@@ -5,9 +5,13 @@ import { BookOpen, ArrowLeft, Play, FastForward, List, Bookmark, RefreshCw, Volu
 import { parseRichTextToSegments } from './richTextParser';
 import audioMapData from './audio_map.json';
 
-const BASE_URL = 'https://assets.huaxu.app/glb/';
+const BASE_URL = 'https://assets.huaxu.app/glb/'
 
 function resolveAsset(path) {
+  return BASE_URL + path.replace(/\.(jpg|jpeg)$/, '.png')
+}
+
+const resolveAssetPath = (path) => {
   if (!path) return '';
   if (path.startsWith('/pgr_data/')) return path;
   
@@ -19,10 +23,8 @@ function resolveAsset(path) {
     .replace(/^pgr_assets\//, 'assets/')
     .replace(/^pgr_audio\//, 'audio/');
     
-  return BASE_URL + cleanPath.replace(/\.(jpg|jpeg)$/, '.png');
-}
-
-const resolveAssetPath = (path) => resolveAsset(path);
+  return resolveAsset(cleanPath);
+};
 
 const resolveWikiUrl = (subpath) => subpath;
 
@@ -633,12 +635,12 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
                     else if (wikiAct.type === 'VideoPlay') {
                       const urls = [];
                       if (wikiAct.videoPc) {
-                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.videoPc}pcen.mp4`);
-                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.videoPc}.mp4`);
+                        urls.push(`${BASE_URL}${wikiAct.videoPc}pcen.mp4`);
+                        urls.push(`${BASE_URL}${wikiAct.videoPc}.mp4`);
                       }
                       if (wikiAct.video) {
-                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.video}pcen.mp4`);
-                        urls.push(`https://assets.huaxu.app/glb/${wikiAct.video}.mp4`);
+                        urls.push(`${BASE_URL}${wikiAct.video}pcen.mp4`);
+                        urls.push(`${BASE_URL}${wikiAct.video}.mp4`);
                       }
                       if (urls.length > 0) {
                         newVideoMap[wikiAct.actionId] = urls;
@@ -1047,7 +1049,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
             const filename = filenameWithExt.split('.')[0].toLowerCase();
             
             // Construct the URL to the remote video
-            const videoSrc = `https://assets.huaxu.app/glb/video/${filename}.mp4`;
+            const videoSrc = `${BASE_URL}video/${filename}.mp4`;
             setVideoUrl(videoSrc);
           }
         }
@@ -1065,8 +1067,8 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
           isBlocking = true;
           setIsPlayingVideo(true);
           const urls = [
-            `https://assets.huaxu.app/glb/video/movie${movieId}pcen.mp4`,
-            `https://assets.huaxu.app/glb/video/movie${movieId}.mp4`
+            `${BASE_URL}video/movie${movieId}pcen.mp4`,
+            `${BASE_URL}video/movie${movieId}.mp4`
           ];
           setVideoUrl(urls);
         }

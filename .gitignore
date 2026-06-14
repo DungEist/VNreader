@@ -23,3 +23,11 @@ dist-electron
 *.njsproj
 *.sln
 *.sw?
+
+# Local public directory asset/data symlinks
+public/pgr_assets
+public/pgr_audio
+public/pgr_data
+public/assets
+public/audio
+
