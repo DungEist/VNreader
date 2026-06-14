@@ -30,7 +30,24 @@ const WIKI_CATEGORIES = [
   { id: 1000, name: 'Affection',               key: 'Affection',                    bg: '/pgr_assets/product/texture/image/rolecharacter/roleheadr7luxiya1.webp',            icon: '💙', accent: '#ff3c65' },
 ];
 
-const resolveAssetPath = (path) => path || '';
+const BASE_URL = 'https://assets.huaxu.app/glb/';
+
+function resolveAsset(path) {
+  if (!path) return '';
+  if (path.startsWith('/pgr_data/')) return path;
+  
+  let cleanPath = path;
+  if (cleanPath.startsWith('/')) {
+    cleanPath = cleanPath.slice(1);
+  }
+  cleanPath = cleanPath
+    .replace(/^pgr_assets\//, 'assets/')
+    .replace(/^pgr_audio\//, 'audio/');
+    
+  return BASE_URL + cleanPath.replace(/\.(jpg|jpeg)$/, '.png');
+}
+
+const resolveAssetPath = (path) => resolveAsset(path);
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
 
 export default function ChapterSelect({ onStartStory, onOpenSettings, initialCategory = null, initialChapter = '' }) {
