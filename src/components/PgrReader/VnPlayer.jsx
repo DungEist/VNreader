@@ -395,14 +395,22 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
     playNext(0);
   };
 
-  // Play BGM when currentMusic changes
+  // Play BGM when currentMusic changes or video starts/stops
   useEffect(() => {
-    if (bgmAudioRef.current) {
-      bgmAudioRef.current.pause();
-      bgmAudioRef.current = null;
+    if (isMuted || !currentMusic) {
+      if (bgmAudioRef.current) {
+        bgmAudioRef.current.pause();
+        bgmAudioRef.current = null;
+      }
+      return;
     }
 
-    if (isMuted || !currentMusic) return;
+    if (isPlayingVideo) {
+      if (bgmAudioRef.current) {
+        bgmAudioRef.current.pause();
+      }
+      return;
+    }
 
     const match = currentMusic.match(/BGM-(\d+)/);
     if (!match) return;
@@ -415,6 +423,17 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
       folderName = `m_${bgmName}`;
     }
     const bgmPath = resolveAssetPath(`/pgr_audio/${folderName}/${folderName}.mp3`);
+
+    // If current audio has the same source, resume playing
+    if (bgmAudioRef.current && bgmAudioRef.current.src === new URL(bgmPath, window.location.href).href) {
+      bgmAudioRef.current.play().catch(err => console.warn('Failed to resume BGM:', err));
+      return;
+    }
+
+    if (bgmAudioRef.current) {
+      bgmAudioRef.current.pause();
+    }
+
     const audio = new Audio(bgmPath);
     audio.loop = true;
     audio.volume = 0.4;
@@ -427,11 +446,27 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
     });
 
     return () => {
-      if (bgmAudioRef.current) {
-        bgmAudioRef.current.pause();
-      }
+      // Don't pause on simple dependencies trigger unless currentMusic changes or isMuted changes
     };
-  }, [currentMusic, isMuted, activeBgmMap]);
+  }, [currentMusic, isMuted, isPlayingVideo, activeBgmMap]);
+
+  // Cleanup voice and SFX when video plays
+  useEffect(() => {
+    if (isPlayingVideo) {
+      if (voiceAudioRef.current) {
+        voiceAudioRef.current.pause();
+        voiceAudioRef.current = null;
+      }
+      if (activeSfxRef.current) {
+        Object.keys(activeSfxRef.current).forEach(soundId => {
+          if (activeSfxRef.current[soundId]) {
+            activeSfxRef.current[soundId].pause();
+          }
+        });
+        activeSfxRef.current = {};
+      }
+    }
+  }, [isPlayingVideo]);
 
   // Audio cleanup on unmount
   useEffect(() => {
