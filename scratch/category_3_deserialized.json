@@ -1,0 +1,193 @@
+{
+  "data": [
+    "ShallowReactive",
+    {
+      "$fQl03CJLd7GzqgvysFBwjVO1InFmILriwx92A2z-133c": {
+        "group": {
+          "id": 3,
+          "name": "Interlude",
+          "background": "image/bgcg/cgqz3003"
+        },
+        "chapters": [
+          {
+            "id": 30100,
+            "name": "Escape to Somewhere",
+            "background": "image/bgcg/cgqz105"
+          },
+          {
+            "id": 30101,
+            "name": "Metamorphosis",
+            "background": "image/bgcg/cgjd07"
+          },
+          {
+            "id": 30102,
+            "name": "Treasure",
+            "background": "image/bgcg/cgqz1501"
+          },
+          {
+            "id": 30201,
+            "name": "Under a Pale Moon",
+            "background": "image/bgcg/cgqz204"
+          },
+          {
+            "id": 30301,
+            "name": "Devour",
+            "background": "image/bgcg/cgqz301"
+          },
+          {
+            "id": 30302,
+            "name": "Friendship",
+            "background": "image/bgcg/cgqz803"
+          },
+          {
+            "id": 30401,
+            "name": "421",
+            "background": "image/bgcg/cgqz401"
+          },
+          {
+            "id": 30501,
+            "name": "Frozen Heart",
+            "background": "image/bgcg/cgqz504"
+          },
+          {
+            "id": 30601,
+            "name": "Fostered by Blade",
+            "background": "image/bgcg/cgqz602"
+          },
+          {
+            "id": 30602,
+            "name": "The Land of the Fallen Star",
+            "background": "image/bgcg/cg901_1"
+          },
+          {
+            "id": 30701,
+            "name": "Snow Prayer",
+            "background": "image/bgcg/cgqz703"
+          },
+          {
+            "id": 30702,
+            "name": "Lost Verity",
+            "background": "image/bgcg/cg1001_7"
+          },
+          {
+            "id": 30801,
+            "name": "Crimson Sunset",
+            "background": "image/bgcg/cgqz906"
+          },
+          {
+            "id": 30901,
+            "name": "Curtains and Canvases",
+            "background": "image/bgcg/cg901_6"
+          },
+          {
+            "id": 31001,
+            "name": "Front Sight Focus",
+            "background": "image/bgcg/cgqz1203"
+          },
+          {
+            "id": 31101,
+            "name": "Flawless",
+            "background": "image/bgcg/cgqz1403"
+          },
+          {
+            "id": 31201,
+            "name": "Valkyrie",
+            "background": "image/bgcg/cgqz1703"
+          },
+          {
+            "id": 31301,
+            "name": "Like Shadow",
+            "background": "image/bgcg/cgqz1603"
+          },
+          {
+            "id": 31401,
+            "name": "Untainted Prayer",
+            "background": "image/bgcg/cgqz1803"
+          },
+          {
+            "id": 31501,
+            "name": "Dream of the Past",
+            "background": "image/bgcg/cgqz2003"
+          },
+          {
+            "id": 31601,
+            "name": "Dijiang",
+            "background": "image/bgcg/cgqz1901"
+          },
+          {
+            "id": 31701,
+            "name": "False Hope",
+            "background": "image/bgcg/cgqz2101"
+          },
+          {
+            "id": 31801,
+            "name": "Starry Tales",
+            "background": "image/bgcg/cgqz2302"
+          },
+          {
+            "id": 31901,
+            "name": "Silent Night",
+            "background": "image/bgcg/cgqz2203"
+          },
+          {
+            "id": 32001,
+            "name": "The Chess Player",
+            "background": "image/bgcg/cgqz2402"
+          },
+          {
+            "id": 32101,
+            "name": "Albus Spectrum",
+            "background": "image/bgcg/cgqz2504"
+          },
+          {
+            "id": 32201,
+            "name": "In the Name of a Hero",
+            "background": "image/bgcg/cgqz2603"
+          },
+          {
+            "id": 32301,
+            "name": "A Great Show",
+            "background": "image/bgcg/cgqz2701"
+          },
+          {
+            "id": 32401,
+            "name": "Blue Bird",
+            "background": "image/bgcg/cgqz2805"
+          },
+          {
+            "id": 32501,
+            "name": "Song of Flowers",
+            "background": "image/bgcg/cgqz2901"
+          },
+          {
+            "id": 32601,
+            "name": "Night Mayfly",
+            "background": "image/bgcg/cgqz3003"
+          }
+        ]
+      }
+    }
+  ],
+  "state": [
+    "Reactive",
+    {
+      "$ssite-config": {
+        "_priority": {
+          "env": -15,
+          "url": -3
+        },
+        "env": "production",
+        "url": "https://huaxu.app"
+      }
+    }
+  ],
+  "once": [
+    "Set"
+  ],
+  "_errors": [
+    "ShallowReactive",
+    {}
+  ],
+  "serverRendered": true,
+  "path": "/ap/wiki/stories/3"
+}

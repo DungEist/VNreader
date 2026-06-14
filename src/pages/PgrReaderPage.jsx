@@ -28,7 +28,17 @@ export default function PgrReaderPage() {
   };
 
   const navigateTo = (view, storyId = null, lang = null) => {
-    if (view === activeView) return;
+    if (view === activeView) {
+      if (storyId !== null && storyId !== activeStoryId) {
+        setTransitioning(true);
+        setTimeout(() => {
+          setActiveStoryId(storyId);
+          if (lang) setActiveLang(lang);
+          setTransitioning(false);
+        }, 220);
+      }
+      return;
+    }
     setTransitioning(true);
     setTimeout(() => {
       setPrevView(activeView);
@@ -71,6 +81,7 @@ export default function PgrReaderPage() {
         )}
         {activeView === 'play' && (
           <VnPlayer
+            key={activeStoryId}
             storyId={activeStoryId}
             onBack={handleBackToSelect}
             onNextStory={(storyId, lang) => handleStartStory(storyId, lang)}

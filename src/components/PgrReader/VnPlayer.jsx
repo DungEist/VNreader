@@ -976,7 +976,27 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
       if (prefabPath.toLowerCase().includes('/uimovie/') || prefabPath.toLowerCase().includes('/fxuimovie/') || prefabPath.toLowerCase().includes('uimovie')) {
         isBlocking = true;
         setIsPlayingVideo(true);
-        setVideoUrl('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1');
+        
+        // Extract filename from prefab path
+        const parts = prefabPath.split('/');
+        const filenameWithExt = parts[parts.length - 1];
+        const filename = filenameWithExt.split('.')[0].toLowerCase();
+        
+        // Construct the URL to the remote video
+        const videoSrc = `https://assets.huaxu.app/glb/video/${filename}.mp4`;
+        setVideoUrl(videoSrc);
+      }
+    }
+    else if (node.Type === 503) {
+      const movieId = params[1];
+      if (movieId) {
+        isBlocking = true;
+        setIsPlayingVideo(true);
+        const urls = [
+          `https://assets.huaxu.app/glb/video/movie${movieId}pcen.mp4`,
+          `https://assets.huaxu.app/glb/video/movie${movieId}.mp4`
+        ];
+        setVideoUrl(urls);
       }
     }
     else if (node.Type === 505) {
@@ -1274,17 +1294,41 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
             borderRadius: '8px',
             overflow: 'hidden'
           }}>
-            <iframe
-              src={videoUrl}
-              title="Video Cutscene"
-              style={{
-                width: '100%',
-                height: '100%',
-                border: 'none'
-              }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+            {typeof videoUrl === 'string' && videoUrl.includes('youtube.com') ? (
+              <iframe
+                src={videoUrl}
+                title="Video Cutscene"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none'
+                }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video
+                key={Array.isArray(videoUrl) ? videoUrl.join(',') : videoUrl}
+                autoPlay
+                controls
+                playsInline
+                onEnded={handleSkipVideo}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  objectFit: 'contain'
+                }}
+              >
+                {Array.isArray(videoUrl) ? (
+                  videoUrl.map((url, idx) => (
+                    <source key={idx} src={url} type="video/mp4" />
+                  ))
+                ) : (
+                  <source src={videoUrl} type="video/mp4" />
+                )}
+              </video>
+            )}
           </div>
           <button
             className="vn-video-skip-btn"
@@ -1496,7 +1540,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
 
       {/* Next Chapter/Stage Modal Popup */}
       {showNextChapterPopup && (() => {
-        const currentStoryIdx = storyIndex.findIndex(item => item.StoryId === storyId);
+        const currentStoryIdx = storyIndex.findIndex(item => item.StoryId.toUpperCase() === storyId.toUpperCase());
         const nextStoryItem = currentStoryIdx !== -1 && currentStoryIdx < storyIndex.length - 1 
           ? storyIndex[currentStoryIdx + 1] 
           : null;
@@ -1526,7 +1570,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
                       onClick={() => {
                         setShowNextChapterPopup(false);
                         if (onNextStory) {
-                          onNextStory(nextStoryItem.StoryId);
+                          onNextStory(nextStoryItem.StoryId, voiceLanguage);
                         }
                       }}
                     >
