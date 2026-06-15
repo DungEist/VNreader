@@ -38,18 +38,7 @@ function resolveAsset(path) {
 
 const resolveAssetPath = (path) => {
   if (!path) return '';
-  if (path.startsWith('/pgr_data/')) {
-    const dataUrl = localStorage.getItem('pgr_data_url') || 
-      ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? '/pgr_data'
-        : 'https://cdn.jsdelivr.net/gh/DungEist/datastory@main');
-        
-    if (dataUrl.startsWith('/')) {
-      return path;
-    }
-    const cleanSubpath = path.slice(10); // strip '/pgr_data/'
-    return dataUrl + '/' + cleanSubpath;
-  }
+  if (path.startsWith('/pgr_data/')) return path;
   
   let cleanPath = path;
   if (cleanPath.startsWith('/')) {
@@ -61,6 +50,22 @@ const resolveAssetPath = (path) => {
     
   return resolveAsset(cleanPath);
 };
+
+const resolveDataPath = (path) => {
+  if (!path) return '';
+  const customUrl = localStorage.getItem('pgr_data_url');
+  if (customUrl && customUrl.trim()) {
+    let clean = path;
+    if (clean.startsWith('/')) clean = clean.slice(1);
+    if (clean.startsWith('pgr_data/')) {
+      clean = clean.slice(9);
+    }
+    const base = customUrl.endsWith('/') ? customUrl : customUrl + '/';
+    return base + clean;
+  }
+  return resolveAssetPath(path);
+};
+
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
 
 export default function ChapterSelect({ onStartStory, onOpenSettings, initialCategory = null, initialChapter = '' }) {
@@ -68,6 +73,7 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
   const [allItems, setAllItems]             = useState([]);
   const [chapterMeta, setChapterMeta]       = useState({});
   const [isLoading, setIsLoading]           = useState(true);
+  const [loadError, setLoadError]           = useState(false);
   const [searchQuery, setSearchQuery]       = useState('');
   const [searchOpen, setSearchOpen]         = useState(false);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
@@ -104,16 +110,18 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
   useEffect(() => {
     (async () => {
       setIsLoading(true);
+      setLoadError(false);
       try {
         const [storyRes, metaRes] = await Promise.all([
-          fetch(resolveAssetPath('/pgr_data/story_index.json')),
-          fetch(resolveAssetPath('/pgr_data/chapter_meta.json')),
+          fetch(resolveDataPath('/pgr_data/story_index.json')),
+          fetch(resolveDataPath('/pgr_data/chapter_meta.json')),
         ]);
         const [storyData, metaData] = await Promise.all([storyRes.json(), metaRes.json()]);
         setAllItems(storyData.map(parseItem));
         setChapterMeta(metaData);
       } catch (e) {
         console.error('Failed to load data:', e);
+        setLoadError(true);
       } finally {
         setIsLoading(false);
       }
@@ -197,32 +205,48 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
   );
 
   // ── Category Grid ─────────────────────────────────────────────────────────
-  const CategoriesView = () => (
-    <div className="cs2-cat-grid">
-      {WIKI_CATEGORIES.map((cat, i) => {
-        const count = categoryCounts[cat.key] || 0;
-        return (
-          <button
-            key={cat.id}
-            className="cs2-cat-card card-stagger"
-            style={{ animationDelay: `${i * 0.05}s`, '--card-accent': cat.accent }}
-            onClick={() => goCategory(cat)}
-          >
-            <img src={resolveAssetPath(cat.bg)} alt={cat.name} className="cs2-cat-img" loading="lazy" />
-            <div className="cs2-cat-gradient" />
-            <div className="cs2-cat-shine" />
-            <div className="cs2-cat-body">
-              <div className="cs2-cat-info">
-                <span className="cs2-cat-name">{cat.name}</span>
-                {count > 0 && <span className="cs2-cat-count">{count} stories</span>}
+  const CategoriesView = () => {
+    const customUrl = localStorage.getItem('pgr_data_url');
+    if (loadError && allItems.length === 0) {
+      return (
+        <div style={{ textAlign: 'center', padding: '3rem 1.5rem', color: '#ff3c65', background: 'rgba(255, 60, 101, 0.05)', borderRadius: '12px', border: '1px dashed rgba(255, 60, 101, 0.2)', maxWidth: '560px', margin: '2rem auto' }}>
+          <p style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '0.75rem' }}>⚠️ Không thể tải dữ liệu cốt truyện</p>
+          <p style={{ fontSize: '0.9rem', color: '#aaa', lineHeight: '1.5' }}>
+            {customUrl 
+              ? 'Vui lòng kiểm tra lại đường dẫn Data Server URL cấu hình trong Cài đặt xem có chính xác và hỗ trợ CORS không.' 
+              : 'Vui lòng vào phần Cài đặt (nhấn biểu tượng bánh răng phía trên bên phải) và cấu hình "Data Server URL (GitHub/CDN)" để tải dữ liệu cốt truyện từ kho lưu trữ của bạn.'}
+          </p>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="cs2-cat-grid">
+        {WIKI_CATEGORIES.map((cat, i) => {
+          const count = categoryCounts[cat.key] || 0;
+          return (
+            <button
+              key={cat.id}
+              className="cs2-cat-card card-stagger"
+              style={{ animationDelay: `${i * 0.05}s`, '--card-accent': cat.accent }}
+              onClick={() => goCategory(cat)}
+            >
+              <img src={resolveAssetPath(cat.bg)} alt={cat.name} className="cs2-cat-img" loading="lazy" />
+              <div className="cs2-cat-gradient" />
+              <div className="cs2-cat-shine" />
+              <div className="cs2-cat-body">
+                <div className="cs2-cat-info">
+                  <span className="cs2-cat-name">{cat.name}</span>
+                  {count > 0 && <span className="cs2-cat-count">{count} stories</span>}
+                </div>
               </div>
-            </div>
-            <div className="cs2-cat-accent-line" />
-          </button>
-        );
-      })}
-    </div>
-  );
+              <div className="cs2-cat-accent-line" />
+            </button>
+          );
+        })}
+      </div>
+    );
+  };
 
   // ── Chapter Grid ──────────────────────────────────────────────────────────
   const ChaptersView = () => (

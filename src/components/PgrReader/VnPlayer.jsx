@@ -13,18 +13,7 @@ function resolveAsset(path) {
 
 const resolveAssetPath = (path) => {
   if (!path) return '';
-  if (path.startsWith('/pgr_data/')) {
-    const dataUrl = localStorage.getItem('pgr_data_url') || 
-      ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? '/pgr_data'
-        : 'https://cdn.jsdelivr.net/gh/DungEist/datastory@main');
-        
-    if (dataUrl.startsWith('/')) {
-      return path;
-    }
-    const cleanSubpath = path.slice(10); // strip '/pgr_data/'
-    return dataUrl + '/' + cleanSubpath;
-  }
+  if (path.startsWith('/pgr_data/')) return path;
   
   let cleanPath = path;
   if (cleanPath.startsWith('/')) {
@@ -35,6 +24,21 @@ const resolveAssetPath = (path) => {
     .replace(/^pgr_audio\//, 'audio/');
     
   return resolveAsset(cleanPath);
+};
+
+const resolveDataPath = (path) => {
+  if (!path) return '';
+  const customUrl = localStorage.getItem('pgr_data_url');
+  if (customUrl && customUrl.trim()) {
+    let clean = path;
+    if (clean.startsWith('/')) clean = clean.slice(1);
+    if (clean.startsWith('pgr_data/')) {
+      clean = clean.slice(9);
+    }
+    const base = customUrl.endsWith('/') ? customUrl : customUrl + '/';
+    return base + clean;
+  }
+  return resolveAssetPath(path);
 };
 
 const resolveWikiUrl = (subpath) => subpath;
@@ -515,20 +519,20 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
     const loadStory = async () => {
       setIsLoading(true);
       try {
-        const actorsRes = await fetch(resolveAssetPath('/pgr_data/MovieActor.json'));
+        const actorsRes = await fetch(resolveDataPath('/pgr_data/MovieActor.json'));
         const actorsData = await actorsRes.json();
         setActors(actorsData);
 
-        const facesRes = await fetch(resolveAssetPath('/pgr_data/MovieRoleFace.json'));
+        const facesRes = await fetch(resolveDataPath('/pgr_data/MovieRoleFace.json'));
         const facesData = await facesRes.json();
         setRoleFaces(facesData);
 
-        const scriptRes = await fetch(resolveAssetPath(`/pgr_data/movies/Movie${storyId}.json`));
+        const scriptRes = await fetch(resolveDataPath(`/pgr_data/movies/Movie${storyId}.json`));
         const scriptData = await scriptRes.json();
         setScript(scriptData);
 
         try {
-          const indexRes = await fetch(resolveAssetPath('/pgr_data/story_index.json'));
+          const indexRes = await fetch(resolveDataPath('/pgr_data/story_index.json'));
           const indexData = await indexRes.json();
           setStoryIndex(indexData);
         } catch (idxErr) {

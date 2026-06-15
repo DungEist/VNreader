@@ -5,12 +5,7 @@ import '../../pages/ChapterSelect2.css';
 export default function SettingsPage({ onBack }) {
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('pgr_player_name') || 'Commandant');
   const [voiceLang, setVoiceLang]   = useState(() => localStorage.getItem('pgr_voice_lang') || 'ja');
-  const [dataUrl, setDataUrl]       = useState(() => {
-    return localStorage.getItem('pgr_data_url') || 
-      ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? '/pgr_data'
-        : 'https://cdn.jsdelivr.net/gh/DungEist/datastory@main');
-  });
+  const [dataUrl, setDataUrl]       = useState(() => localStorage.getItem('pgr_data_url') || '');
 
   return (
     <div className="cs2-root">
@@ -81,8 +76,8 @@ export default function SettingsPage({ onBack }) {
               </select>
             </div>
 
-            <div className="hs-settings-form-row">
-              <label>Data Server URL (CDN)</label>
+            <div className="hs-settings-form-row" style={{ marginTop: '0.75rem' }}>
+              <label>Data Server URL (GitHub/CDN)</label>
               <input
                 type="text"
                 value={dataUrl}
@@ -90,10 +85,11 @@ export default function SettingsPage({ onBack }) {
                   setDataUrl(e.target.value);
                   localStorage.setItem('pgr_data_url', e.target.value);
                 }}
-                placeholder="https://cdn.jsdelivr.net/gh/DungEist/datastory@main"
+                placeholder="Trống (Mặc định local) hoặc https://cdn.jsdelivr.net/gh/..."
+                style={{ fontSize: '0.85rem' }}
               />
-              <span className="hs-section-desc" style={{ fontSize: '0.75rem', marginTop: '4px', display: 'block', opacity: 0.7 }}>
-                URL to the repository containing story JSONs (e.g. jsDelivr URL). Use <code>/pgr_data</code> for local files.
+              <span style={{ fontSize: '0.72rem', color: '#888', marginTop: '4px', display: 'block', lineHeight: '1.4' }}>
+                * Ví dụ: <code>https://cdn.jsdelivr.net/gh/DungEist/pgr-reader-data@main</code>
               </span>
             </div>
           </div>

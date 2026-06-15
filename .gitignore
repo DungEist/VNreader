@@ -27,7 +27,7 @@ dist-electron
 # Local public directory asset/data symlinks
 public/pgr_assets
 public/pgr_audio
-public/pgr_data/movies
+public/pgr_data
 public/assets
 public/audio
 
