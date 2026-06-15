@@ -5,6 +5,12 @@ import '../../pages/ChapterSelect2.css';
 export default function SettingsPage({ onBack }) {
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('pgr_player_name') || 'Commandant');
   const [voiceLang, setVoiceLang]   = useState(() => localStorage.getItem('pgr_voice_lang') || 'ja');
+  const [dataUrl, setDataUrl]       = useState(() => {
+    return localStorage.getItem('pgr_data_url') || 
+      ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? '/pgr_data'
+        : 'https://cdn.jsdelivr.net/gh/DungEist/datastory@main');
+  });
 
   return (
     <div className="cs2-root">
@@ -73,6 +79,22 @@ export default function SettingsPage({ onBack }) {
                 <option value="ca">🇭🇰 Cant (Cantonese)</option>
                 <option value="en">🇺🇸 EN (English)</option>
               </select>
+            </div>
+
+            <div className="hs-settings-form-row">
+              <label>Data Server URL (CDN)</label>
+              <input
+                type="text"
+                value={dataUrl}
+                onChange={(e) => {
+                  setDataUrl(e.target.value);
+                  localStorage.setItem('pgr_data_url', e.target.value);
+                }}
+                placeholder="https://cdn.jsdelivr.net/gh/DungEist/datastory@main"
+              />
+              <span className="hs-section-desc" style={{ fontSize: '0.75rem', marginTop: '4px', display: 'block', opacity: 0.7 }}>
+                URL to the repository containing story JSONs (e.g. jsDelivr URL). Use <code>/pgr_data</code> for local files.
+              </span>
             </div>
           </div>
 

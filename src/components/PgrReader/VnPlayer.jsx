@@ -13,7 +13,18 @@ function resolveAsset(path) {
 
 const resolveAssetPath = (path) => {
   if (!path) return '';
-  if (path.startsWith('/pgr_data/')) return path;
+  if (path.startsWith('/pgr_data/')) {
+    const dataUrl = localStorage.getItem('pgr_data_url') || 
+      ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? '/pgr_data'
+        : 'https://cdn.jsdelivr.net/gh/DungEist/datastory@main');
+        
+    if (dataUrl.startsWith('/')) {
+      return path;
+    }
+    const cleanSubpath = path.slice(10); // strip '/pgr_data/'
+    return dataUrl + '/' + cleanSubpath;
+  }
   
   let cleanPath = path;
   if (cleanPath.startsWith('/')) {
