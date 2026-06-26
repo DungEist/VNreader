@@ -54,16 +54,15 @@ const resolveAssetPath = (path) => {
 const resolveDataPath = (path) => {
   if (!path) return '';
   const customUrl = localStorage.getItem('pgr_data_url');
-  if (customUrl && customUrl.trim()) {
-    let clean = path;
-    if (clean.startsWith('/')) clean = clean.slice(1);
-    if (clean.startsWith('pgr_data/')) {
-      clean = clean.slice(9);
-    }
-    const base = customUrl.endsWith('/') ? customUrl : customUrl + '/';
-    return base + clean;
+  const baseDataUrl = customUrl && customUrl.trim() ? customUrl : 'https://raw.githubusercontent.com/DungEist/datastory/main/';
+  
+  let clean = path;
+  if (clean.startsWith('/')) clean = clean.slice(1);
+  if (clean.startsWith('pgr_data/')) {
+    clean = clean.slice(9);
   }
-  return resolveAssetPath(path);
+  const base = baseDataUrl.endsWith('/') ? baseDataUrl : baseDataUrl + '/';
+  return base + clean;
 };
 
 const VIEW = { CATEGORIES: 'categories', CHAPTERS: 'chapters', STAGES: 'stages' };
