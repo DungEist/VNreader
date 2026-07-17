@@ -1259,6 +1259,13 @@
     "background": "image/bgcg/cghb102",
     "bgUrl": "/pgr_assets/product/texture/image/bgcg/cghb102.webp"
   },
+  "11_6050": {
+    "catId": 11,
+    "chapId": 6050,
+    "name": "Tidal Wishes",
+    "background": "image/bgcg/cghb105",
+    "bgUrl": "/pgr_assets/product/texture/image/bgcg/cghb105.webp"
+  },
   "12_12001": {
     "catId": 12,
     "chapId": 12001,
@@ -1412,6 +1419,13 @@
     "name": "ER15 The Dying Sun",
     "background": "image/uifubenmaintabchapter/instanceiconpicer15",
     "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpicer15.webp"
+  },
+  "14_14017": {
+    "catId": 14,
+    "chapId": 14017,
+    "name": "ER16 Of Solitude and Stillness",
+    "background": "image/uifubenmaintabchapter/instanceiconpicer16",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpicer16.webp"
   },
   "15_15001": {
     "catId": 15,
@@ -2028,5 +2042,12 @@
     "name": "Lucia: Inverse Crown",
     "background": "image/rolecharacter/roleheadr7luxiya1",
     "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr7luxiya1.webp"
+  },
+  "1000_1401003": {
+    "catId": 1000,
+    "chapId": 1401003,
+    "name": "Helentine: Lacrimosa",
+    "background": "image/rolecharacter/roleheadr3helentine1",
+    "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr3helentine1.webp"
   }
 }
