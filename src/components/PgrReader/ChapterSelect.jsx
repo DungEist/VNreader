@@ -136,6 +136,40 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
     return allItems.filter(i => i.category === activeCategory.key);
   }, [allItems, activeCategory]);
 
+  const categoryBgs = useMemo(() => {
+    const bgs = {};
+    const catItemsMap = {};
+    allItems.forEach(item => {
+      if (!catItemsMap[item.category]) catItemsMap[item.category] = [];
+      catItemsMap[item.category].push(item);
+    });
+
+    WIKI_CATEGORIES.forEach(cat => {
+      bgs[cat.id] = cat.bg;
+      const catItems = catItemsMap[cat.key] || [];
+      if (catItems.length === 0) return;
+      const uniqueStorylines = Array.from(new Set(catItems.map(i => i.storyline)));
+      const catMeta = Object.values(chapterMeta).filter(m => m.catId === cat.id);
+      
+      if (catMeta.length > 0) {
+        const validChaps = catMeta.map(m => {
+          const match = uniqueStorylines.find(s => s === m.name || s.toLowerCase() === m.name.toLowerCase());
+          const stageCount = catItems.filter(i => i.storyline === (match || m.name)).length;
+          return { chapId: m.chapId, bgUrl: m.bgUrl, stageCount };
+        }).filter(c => c.stageCount > 0);
+        
+        if (validChaps.length > 0) {
+          validChaps.sort((a, b) => a.chapId - b.chapId);
+          const latestChap = validChaps[validChaps.length - 1];
+          if (latestChap && latestChap.bgUrl) {
+            bgs[cat.id] = latestChap.bgUrl;
+          }
+        }
+      }
+    });
+    return bgs;
+  }, [allItems, chapterMeta]);
+
   const chapters = useMemo(() => {
     if (!activeCategory) return [];
     const uniqueStorylines = Array.from(new Set(catItems.map(i => i.storyline)));
@@ -230,7 +264,7 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
               style={{ animationDelay: `${i * 0.05}s`, '--card-accent': cat.accent }}
               onClick={() => goCategory(cat)}
             >
-              <img src={resolveAssetPath(cat.bg)} alt={cat.name} className="cs2-cat-img" loading="lazy" />
+              <img src={resolveAssetPath(categoryBgs[cat.id] || cat.bg)} alt={cat.name} className="cs2-cat-img" loading="lazy" />
               <div className="cs2-cat-gradient" />
               <div className="cs2-cat-shine" />
               <div className="cs2-cat-body">
