@@ -159,7 +159,6 @@ export default function ChapterSelect({ onStartStory, onOpenSettings, initialCat
         }).filter(c => c.stageCount > 0);
         
         if (validChaps.length > 0) {
-          validChaps.sort((a, b) => a.chapId - b.chapId);
           const latestChap = validChaps[validChaps.length - 1];
           if (latestChap && latestChap.bgUrl) {
             bgs[cat.id] = latestChap.bgUrl;
