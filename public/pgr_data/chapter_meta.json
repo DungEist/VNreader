@@ -293,6 +293,13 @@
     "background": "image/uifubenmaintabchapter/instanceiconpic41",
     "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic41.webp"
   },
+  "1_1042": {
+    "catId": 1,
+    "chapId": 1042,
+    "name": "42 Steering By Light",
+    "background": "image/uifubenmaintabchapter/instanceiconpic42",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic42.webp"
+  },
   "2_2001": {
     "catId": 2,
     "chapId": 2001,
@@ -397,6 +404,13 @@
     "name": "16 Evernight Beat",
     "background": "image/uifubenmaintabchapter/instanceiconpic16",
     "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic16.webp"
+  },
+  "2_2017": {
+    "catId": 2,
+    "chapId": 2017,
+    "name": "17 Steering By Light",
+    "background": "image/uifubenmaintabchapter/instanceiconpic42",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic42.webp"
   },
   "3_30100": {
     "catId": 3,
@@ -1241,7 +1255,7 @@
   "11_6047": {
     "catId": 11,
     "chapId": 6047,
-    "name": "Mercy in All Things",
+    "name": "Her Merciful Gaze",
     "background": "image/bgcg/cg6001_12",
     "bgUrl": "/pgr_assets/product/texture/image/bgcg/cg6001_12.webp"
   },
@@ -2049,5 +2063,12 @@
     "name": "Helentine: Lacrimosa",
     "background": "image/rolecharacter/roleheadr3helentine1",
     "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr3helentine1.webp"
+  },
+  "1000_1071005": {
+    "catId": 1000,
+    "chapId": 1071005,
+    "name": "Karenina: Effulgence",
+    "background": "image/rolecharacter/roleheadr5kalienina1",
+    "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr5kalienina1.webp"
   }
 }
