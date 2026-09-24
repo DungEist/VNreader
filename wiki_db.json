@@ -2777,16 +2777,6 @@
     "category": "1",
     "chapterId": 1013,
     "chapterTitle": "13 Fake Ascension",
-    "stageNum": "Question",
-    "stageTitle": "",
-    "storyIds": [
-      "FZ01603BE"
-    ]
-  },
-  {
-    "category": "1",
-    "chapterId": 1013,
-    "chapterTitle": "13 Fake Ascension",
     "stageNum": "Traveler",
     "stageTitle": "",
     "storyIds": [
@@ -12048,96 +12038,6 @@
   },
   {
     "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-1",
-    "stageTitle": "Prison",
-    "storyIds": [
-      "ZX05401YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-2",
-    "stageTitle": "Shatter",
-    "storyIds": [
-      "ZX05402YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-3",
-    "stageTitle": "Someone to Rely On",
-    "storyIds": [
-      "ZX05403YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-4",
-    "stageTitle": "VI",
-    "storyIds": [
-      "ZX05404YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-5",
-    "stageTitle": "Instinct",
-    "storyIds": [
-      "ZX05405YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-6",
-    "stageTitle": "Memory Blockade",
-    "storyIds": [
-      "ZX05406YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-7",
-    "stageTitle": "Erroneous Death",
-    "storyIds": [
-      "ZX05407YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-8",
-    "stageTitle": "Her \"Rebirth\"",
-    "storyIds": [
-      "ZX05408YA"
-    ]
-  },
-  {
-    "category": "14",
-    "chapterId": 14012,
-    "chapterTitle": "ER11 Begin Anew",
-    "stageNum": "ER11-9",
-    "stageTitle": "Jetavie",
-    "storyIds": [
-      "ZX05409YA"
-    ]
-  },
-  {
-    "category": "14",
     "chapterId": 14013,
     "chapterTitle": "ER12 Spark to Wildfire",
     "stageNum": "ER12-2",
@@ -18449,70 +18349,10 @@
     "category": "6",
     "chapterId": 6019,
     "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅰ",
-    "stageTitle": "SP-02",
-    "storyIds": [
-      "ZZ00102BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅰ",
-    "stageTitle": "SP-03",
-    "storyIds": [
-      "ZZ00103BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅰ",
-    "stageTitle": "SP-04",
-    "storyIds": [
-      "ZZ00104BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
     "stageNum": "Ⅱ",
     "stageTitle": "SP-01",
     "storyIds": [
       "ZZ00105BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅱ",
-    "stageTitle": "SP-02",
-    "storyIds": [
-      "ZZ00106BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅱ",
-    "stageTitle": "SP-03",
-    "storyIds": [
-      "ZZ00107BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅱ",
-    "stageTitle": "SP-04",
-    "storyIds": [
-      "ZZ00108BA"
     ]
   },
   {
@@ -18529,70 +18369,10 @@
     "category": "6",
     "chapterId": 6019,
     "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅲ",
-    "stageTitle": "SP-02",
-    "storyIds": [
-      "ZZ00110BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅲ",
-    "stageTitle": "SP-03",
-    "storyIds": [
-      "ZZ00111BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅲ",
-    "stageTitle": "SP-04",
-    "storyIds": [
-      "ZZ00112BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
     "stageNum": "Ⅳ",
     "stageTitle": "SP-01",
     "storyIds": [
       "ZZ00113BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅳ",
-    "stageTitle": "SP-02",
-    "storyIds": [
-      "ZZ00114BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅳ",
-    "stageTitle": "SP-03",
-    "storyIds": [
-      "ZZ00115BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6019,
-    "chapterTitle": "Virtual Horizon",
-    "stageNum": "Ⅳ",
-    "stageTitle": "SP-04",
-    "storyIds": [
-      "ZZ00116BA"
     ]
   },
   {
@@ -21840,166 +21620,6 @@
   },
   {
     "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Beneath the Sands",
-    "storyIds": [
-      "HD03702BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Beneath the Sands",
-    "storyIds": [
-      "HD03702EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Echoes of the Woodland",
-    "storyIds": [
-      "HD03703BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Echoes of the Woodland",
-    "storyIds": [
-      "HD03703EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Quiet Depths",
-    "storyIds": [
-      "HD03704BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Quiet Depths",
-    "storyIds": [
-      "HD03704EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Endless Winter",
-    "storyIds": [
-      "HD03705BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Endless Winter",
-    "storyIds": [
-      "HD03705EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Forest Marsh",
-    "storyIds": [
-      "HD03706BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Forest Marsh",
-    "storyIds": [
-      "HD03706EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Purge Pact",
-    "storyIds": [
-      "HD03707BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Purge Pact",
-    "storyIds": [
-      "HD03707EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Dim Light of the End",
-    "storyIds": [
-      "HD03708BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Dim Light of the End",
-    "storyIds": [
-      "HD03708EA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Before Departure",
-    "stageTitle": "Beyond the Cosmos",
-    "storyIds": [
-      "HD03709BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6115,
-    "chapterTitle": "Stellar Witching Hour",
-    "stageNum": "Final Destination",
-    "stageTitle": "Beyond the Cosmos",
-    "storyIds": [
-      "HD03709EA"
-    ]
-  },
-  {
-    "category": "6",
     "chapterId": 6114,
     "chapterTitle": "Hydrangea Gala",
     "stageNum": "The First Bloom",
@@ -22952,30 +22572,10 @@
     "category": "6",
     "chapterId": 6111,
     "chapterTitle": "Pulao's Odyssey",
-    "stageNum": "Pulao's Odyssey",
-    "stageTitle": "",
-    "storyIds": [
-      "HD03002BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6111,
-    "chapterTitle": "Pulao's Odyssey",
     "stageNum": "Pulao's Cultivation",
     "stageTitle": "",
     "storyIds": [
       "HD03003BA"
-    ]
-  },
-  {
-    "category": "6",
-    "chapterId": 6111,
-    "chapterTitle": "Pulao's Odyssey",
-    "stageNum": "Pulao's Cultivation",
-    "stageTitle": "",
-    "storyIds": [
-      "HD03004BA"
     ]
   },
   {
@@ -25997,17 +25597,6 @@
     "stageTitle": "",
     "storyIds": [
       "ZX04011BA"
-    ]
-  },
-  {
-    "category": "10",
-    "chapterId": 10002,
-    "chapterTitle": "Blazing Simulacrum",
-    "stageNum": "The Conflict",
-    "stageTitle": "",
-    "storyIds": [
-      "ZX04012BA",
-      "ZX04012EA"
     ]
   },
   {
@@ -32098,6 +31687,2972 @@
     "stageTitle": "",
     "storyIds": [
       "HG16506BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1023,
+    "chapterTitle": "23 Wintry Shackles",
+    "stageNum": "23-12",
+    "stageTitle": "The Beginning",
+    "storyIds": [
+      "ZX03412BA",
+      "ZX03412EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1028,
+    "chapterTitle": "28 Polaris Bond",
+    "stageNum": "28-10",
+    "stageTitle": "Destiny",
+    "storyIds": [
+      "ZX04219BA",
+      "ZX04219EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-1",
+    "stageTitle": "Echoes of Nightmare",
+    "storyIds": [
+      "ZX04801BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-2",
+    "stageTitle": "Caged Bird in the Court of Time",
+    "storyIds": [
+      "ZX04802BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-3",
+    "stageTitle": "Golden Time Court",
+    "storyIds": [
+      "ZX04803BA",
+      "ZX04803EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-4",
+    "stageTitle": "The Loom of Calamity",
+    "storyIds": [
+      "ZX04804BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-5",
+    "stageTitle": "Oblivion Butterfly",
+    "storyIds": [
+      "ZX04805BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-6",
+    "stageTitle": "The Sunken City",
+    "storyIds": [
+      "ZX04806BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-7",
+    "stageTitle": "The Ark of Decay",
+    "storyIds": [
+      "ZX04807BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-8",
+    "stageTitle": "How can you \"transform into a butterfly\"?",
+    "storyIds": [
+      "ZX04808BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-9",
+    "stageTitle": "Record: Descend",
+    "storyIds": [
+      "ZX04809BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-10",
+    "stageTitle": "Record: Rotting Wood",
+    "storyIds": [
+      "ZX04810BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-11",
+    "stageTitle": "Record: Hero",
+    "storyIds": [
+      "ZX04811BA",
+      "ZX04811EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-12",
+    "stageTitle": "Record: Widower",
+    "storyIds": [
+      "ZX04812BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-13",
+    "stageTitle": "Record: Harvest",
+    "storyIds": [
+      "ZX04813BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-14",
+    "stageTitle": "Why do you \"transform into a butterfly\"?",
+    "storyIds": [
+      "ZX04814BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-15",
+    "stageTitle": "Lost in an Endless Dream",
+    "storyIds": [
+      "ZX04815BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-16",
+    "stageTitle": "Death Loop",
+    "storyIds": [
+      "ZX04816BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-17",
+    "stageTitle": "Birth of Planets",
+    "storyIds": [
+      "ZX04817BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-18",
+    "stageTitle": "Until the sun rises.",
+    "storyIds": [
+      "ZX04818BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-19",
+    "stageTitle": "Froggie and the Four-leaf Clover",
+    "storyIds": [
+      "ZX04819BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-20",
+    "stageTitle": "A canal that leads to the Galaxy",
+    "storyIds": [
+      "ZX04820BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-21",
+    "stageTitle": "The Search for Tomorrow",
+    "storyIds": [
+      "ZX04821BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-22",
+    "stageTitle": "Pyroath of the Long Night",
+    "storyIds": [
+      "ZX04822BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-23",
+    "stageTitle": "What&#39;s \"Transform into a Butterfly\"?",
+    "storyIds": [
+      "ZX04823BA",
+      "ZX04823EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-24",
+    "stageTitle": "Slaughterhouse #5",
+    "storyIds": [
+      "ZX04824BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-25",
+    "stageTitle": "The Final Interview",
+    "storyIds": [
+      "ZX04825BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-26",
+    "stageTitle": "\"The Bridge Across Dreams\"",
+    "storyIds": [
+      "ZX04826BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-27",
+    "stageTitle": "Homecoming Butterfly",
+    "storyIds": [
+      "ZX04827BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-28",
+    "stageTitle": "Victim of Suicide Epidermic",
+    "storyIds": [
+      "ZX04828BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-29",
+    "stageTitle": "Shaper&#39;s Ripples",
+    "storyIds": [
+      "ZX04829BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1031,
+    "chapterTitle": "31 Shaper's Ripples",
+    "stageNum": "31-30",
+    "stageTitle": "In the first light...",
+    "storyIds": [
+      "ZX04830BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-1",
+    "stageTitle": "A River of Blossoms",
+    "storyIds": [
+      "ZX05000BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-2",
+    "stageTitle": "A Future Yet to Be",
+    "storyIds": [
+      "ZX05001BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-3",
+    "stageTitle": "Irreversible End",
+    "storyIds": [
+      "ZX05002BA",
+      "ZX05002EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-4",
+    "stageTitle": "Fate&#39;s Onslaught",
+    "storyIds": [
+      "ZX05003BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-5",
+    "stageTitle": "Rose in Winter",
+    "storyIds": [
+      "ZX05004BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-6",
+    "stageTitle": "Solitary City",
+    "storyIds": [
+      "ZX05005BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-7",
+    "stageTitle": "Apocalypse Voyage",
+    "storyIds": [
+      "ZX05006BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-8",
+    "stageTitle": "A Small Star",
+    "storyIds": [
+      "ZX05007BA",
+      "ZX05007EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-9",
+    "stageTitle": "Blended Worlds",
+    "storyIds": [
+      "ZX05008BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-10",
+    "stageTitle": "Chaos",
+    "storyIds": [
+      "ZX05009BA",
+      "ZX05009EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-11",
+    "stageTitle": "Anchor",
+    "storyIds": [
+      "ZX05010BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-12",
+    "stageTitle": "With the Flow",
+    "storyIds": [
+      "ZX05011BA",
+      "ZX05011EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-13",
+    "stageTitle": "Into the Unknown",
+    "storyIds": [
+      "ZX05012BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-14",
+    "stageTitle": "Beyond the Ruins",
+    "storyIds": [
+      "ZX05013BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-15",
+    "stageTitle": "Spider Silk",
+    "storyIds": [
+      "ZX05014BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-16",
+    "stageTitle": "River of Time",
+    "storyIds": [
+      "ZX05015BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-17",
+    "stageTitle": "Grand Entrance",
+    "storyIds": [
+      "ZX05016BA",
+      "ZX05016EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-18",
+    "stageTitle": "Towards a Farther Star",
+    "storyIds": [
+      "ZX05017BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-19",
+    "stageTitle": "Cursed Wisdom",
+    "storyIds": [
+      "ZX05018BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-20",
+    "stageTitle": "All Roads Lead to This Moment",
+    "storyIds": [
+      "ZX05019BA",
+      "ZX05019EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-21",
+    "stageTitle": "Time Marches On",
+    "storyIds": [
+      "ZX05020BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-22",
+    "stageTitle": "Trajectory",
+    "storyIds": [
+      "ZX05021BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-23",
+    "stageTitle": "Let&#39;s go!",
+    "storyIds": [
+      "ZX05022BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-24",
+    "stageTitle": "A Gift for Tomorrow",
+    "storyIds": [
+      "ZX05023BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1032,
+    "chapterTitle": "32 To the Galaxies",
+    "stageNum": "32-25",
+    "stageTitle": "After Departure",
+    "storyIds": [
+      "ZX05024BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-1",
+    "stageTitle": "The Hymn of Time",
+    "storyIds": [
+      "ZX05100BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-2",
+    "stageTitle": "A Never-Ending Winter",
+    "storyIds": [
+      "ZX05101BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-3",
+    "stageTitle": "Sink Silently Into the Sea",
+    "storyIds": [
+      "ZX05102BA",
+      "ZX05102EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-4",
+    "stageTitle": "Cradlesong",
+    "storyIds": [
+      "ZX05103BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-5",
+    "stageTitle": "In the Snowstorm",
+    "storyIds": [
+      "ZX05104BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-6",
+    "stageTitle": "Murky Moonlight",
+    "storyIds": [
+      "ZX05105BA",
+      "ZX05105EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-7",
+    "stageTitle": "Death Knell",
+    "storyIds": [
+      "ZX05131BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-8",
+    "stageTitle": "\"Tomorrow\"",
+    "storyIds": [
+      "ZX05106BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-9",
+    "stageTitle": "Burn",
+    "storyIds": [
+      "ZX05107BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-10",
+    "stageTitle": "Ishmael&#39;s Fable",
+    "storyIds": [
+      "ZX05108EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-11",
+    "stageTitle": "Flames Blanketed by Snow",
+    "storyIds": [
+      "ZX05109BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-12",
+    "stageTitle": "Firewood",
+    "storyIds": [
+      "ZX05110BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-13",
+    "stageTitle": "Another Choice",
+    "storyIds": [
+      "ZX05111BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-14",
+    "stageTitle": "\"High Wall\"",
+    "storyIds": [
+      "ZX05112BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-15",
+    "stageTitle": "Ominous Sparks",
+    "storyIds": [
+      "ZX05113BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-16",
+    "stageTitle": "Stairs at the Edge",
+    "storyIds": [
+      "ZX05113EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-17",
+    "stageTitle": "Spiral Tower",
+    "storyIds": [
+      "ZX05114BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-18",
+    "stageTitle": "\"Gravekeeper\"",
+    "storyIds": [
+      "ZX05115BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-19",
+    "stageTitle": "At the Cost of Life",
+    "storyIds": [
+      "ZX05116BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-20",
+    "stageTitle": "Dangerous Place",
+    "storyIds": [
+      "ZX05117BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-21",
+    "stageTitle": "\"Born\" Again",
+    "storyIds": [
+      "ZX05118BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-22",
+    "stageTitle": "Lone Shadow in Corridor",
+    "storyIds": [
+      "ZX05119BA",
+      "ZX05119EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-23",
+    "stageTitle": "Death Reenactment",
+    "storyIds": [
+      "ZX05120BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-24",
+    "stageTitle": "Gazing From Above",
+    "storyIds": [
+      "ZX05121BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-25",
+    "stageTitle": "Four-Winged White Raven",
+    "storyIds": [
+      "ZX05122BA",
+      "ZX05122EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-26",
+    "stageTitle": "Heat Death in Time",
+    "storyIds": [
+      "ZX05123BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-27",
+    "stageTitle": "The Punisher",
+    "storyIds": [
+      "ZX05124BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-28",
+    "stageTitle": "Double Spirals",
+    "storyIds": [
+      "ZX05125BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-29",
+    "stageTitle": "\"Annihilation\"",
+    "storyIds": [
+      "ZX05126BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-30",
+    "stageTitle": "Gear",
+    "storyIds": [
+      "ZX05127BA",
+      "ZX05127EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-31",
+    "stageTitle": "Gift from the Stars",
+    "storyIds": [
+      "ZX05128BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-32",
+    "stageTitle": "Vision at Dawn",
+    "storyIds": [
+      "ZX05129BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1033,
+    "chapterTitle": "33 Wither to Shine",
+    "stageNum": "33-33",
+    "stageTitle": "Lucia",
+    "storyIds": [
+      "ZX05130BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-1",
+    "stageTitle": "Tide and Sound",
+    "storyIds": [
+      "ZX06801BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-2",
+    "stageTitle": "A White-Hot Soul",
+    "storyIds": [
+      "ZX06802BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-3",
+    "stageTitle": "Song of the Whale",
+    "storyIds": [
+      "ZX06803BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-4",
+    "stageTitle": "Homeward Current",
+    "storyIds": [
+      "ZX06804BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-5",
+    "stageTitle": "Winding Waves",
+    "storyIds": [
+      "ZX06805BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-6",
+    "stageTitle": "Noise Adrift",
+    "storyIds": [
+      "ZX06806BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-7",
+    "stageTitle": "What the Seagull Carried",
+    "storyIds": [
+      "ZX06807BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-8",
+    "stageTitle": "When the Fairy Tale Sank",
+    "storyIds": [
+      "ZX06808BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-9",
+    "stageTitle": "Starsea in Bloom",
+    "storyIds": [
+      "ZX06809BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-10",
+    "stageTitle": "Balloons, Sea Light, and Red Hair",
+    "storyIds": [
+      "ZX06810BA",
+      "ZX06810EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-11",
+    "stageTitle": "Riotous Corrosion",
+    "storyIds": [
+      "ZX06811BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-12",
+    "stageTitle": "The Reasonless Law of Birth",
+    "storyIds": [
+      "ZX06812BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-13",
+    "stageTitle": "Anchoring Life&#39;s Error",
+    "storyIds": [
+      "ZX06813BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-14",
+    "stageTitle": "Folded Course",
+    "storyIds": [
+      "ZX06814BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-15",
+    "stageTitle": "Ship of Mortals",
+    "storyIds": [
+      "ZX06815BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-16",
+    "stageTitle": "Requiem",
+    "storyIds": [
+      "ZX06816BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-17",
+    "stageTitle": "We, the Drowned",
+    "storyIds": [
+      "ZX06817BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-18",
+    "stageTitle": "New World Never Was",
+    "storyIds": [
+      "ZX06818BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-19",
+    "stageTitle": "Protocol Buffer",
+    "storyIds": [
+      "ZX06819BA",
+      "ZX06819EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-20",
+    "stageTitle": "Drowned in the Wind",
+    "storyIds": [
+      "ZX06820BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-21",
+    "stageTitle": "Trivial Yet Precious Things",
+    "storyIds": [
+      "ZX06821BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-22",
+    "stageTitle": "Logs and Diaries",
+    "storyIds": [
+      "ZX06822BA",
+      "ZX06822EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-23",
+    "stageTitle": "What Mother Never Taught Her",
+    "storyIds": [
+      "ZX06823BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-24",
+    "stageTitle": "Restoration",
+    "storyIds": [
+      "ZX06824BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-25",
+    "stageTitle": "But the Sea Runs Deep",
+    "storyIds": [
+      "ZX06825BA",
+      "ZX06825EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1042,
+    "chapterTitle": "42 Steering By Light",
+    "stageNum": "42-26",
+    "stageTitle": "To the Deepest Ocean",
+    "storyIds": [
+      "ZX06826BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-1",
+    "stageTitle": "Ocean Heart Awakens",
+    "storyIds": [
+      "ZX06901BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-2",
+    "stageTitle": "Abyss Offensive",
+    "storyIds": [
+      "ZX06902BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-3",
+    "stageTitle": "Handshake Protocol",
+    "storyIds": [
+      "ZX06903BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-4",
+    "stageTitle": "Sailor Adrift",
+    "storyIds": [
+      "ZX06904BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-5",
+    "stageTitle": "Day of Enlightenment",
+    "storyIds": [
+      "ZX06905BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-6",
+    "stageTitle": "Whose New World",
+    "storyIds": [
+      "ZX06906BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-7",
+    "stageTitle": "Shattered Dawn",
+    "storyIds": [
+      "ZX06907BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-8",
+    "stageTitle": "The Long Road",
+    "storyIds": [
+      "ZX06908BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-9",
+    "stageTitle": "Past Intertwined",
+    "storyIds": [
+      "ZX06909BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-10",
+    "stageTitle": "Upstream",
+    "storyIds": [
+      "ZX06910BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-11",
+    "stageTitle": "Mutual Destruction",
+    "storyIds": [
+      "ZX06911BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-12",
+    "stageTitle": "Golden Dawn",
+    "storyIds": [
+      "ZX06912BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-13",
+    "stageTitle": "Cataclysm and Resurrection",
+    "storyIds": [
+      "ZX06913BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-14",
+    "stageTitle": "Conviction",
+    "storyIds": [
+      "ZX06914BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-15",
+    "stageTitle": "Styx Crossing",
+    "storyIds": [
+      "ZX06915BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-16",
+    "stageTitle": "Keeping Watch at Eternity&#39;s End",
+    "storyIds": [
+      "ZX06916BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-17",
+    "stageTitle": "Bearer of the Heavens",
+    "storyIds": [
+      "ZX06917BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-18",
+    "stageTitle": "Parting the Sea",
+    "storyIds": [
+      "ZX06918EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-19",
+    "stageTitle": "Rebuilding \"Ananke\"",
+    "storyIds": [
+      "ZX06919EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-20",
+    "stageTitle": "Inquest and Farewell",
+    "storyIds": [
+      "ZX06920BA",
+      "ZX06920EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-21",
+    "stageTitle": "Anchored in Faith",
+    "storyIds": [
+      "ZX06921BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-22",
+    "stageTitle": "Into the Future",
+    "storyIds": [
+      "ZX06922BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1043,
+    "chapterTitle": "43 Anchored in Faith",
+    "stageNum": "43-23",
+    "stageTitle": "Caged Bird",
+    "storyIds": [
+      "ZX06923BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-1",
+    "stageTitle": "Rusty Snowfield",
+    "storyIds": [
+      "ZX04601BA",
+      "ZX04601EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-2",
+    "stageTitle": "Key and Firefly",
+    "storyIds": [
+      "ZX04602BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-3",
+    "stageTitle": "Fading Signals",
+    "storyIds": [
+      "ZX04603BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-4",
+    "stageTitle": "Tomb Passage",
+    "storyIds": [
+      "ZX04604BA",
+      "ZX04604EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-5",
+    "stageTitle": "Lost City",
+    "storyIds": [
+      "ZX04605BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-6",
+    "stageTitle": "Grant Me Protection",
+    "storyIds": [
+      "ZX04606BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-7",
+    "stageTitle": "The Negotiator",
+    "storyIds": [
+      "ZX04607BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-8",
+    "stageTitle": "Shadow of the Past",
+    "storyIds": [
+      "ZX04608BA",
+      "ZX04608EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-9",
+    "stageTitle": "What Selfishness Means",
+    "storyIds": [
+      "ZX04609BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-10",
+    "stageTitle": "Equivalent Exchange",
+    "storyIds": [
+      "ZX04610BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-11",
+    "stageTitle": "Masquerade",
+    "storyIds": [
+      "ZX04611BA",
+      "ZX04611EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-12",
+    "stageTitle": "Balance Beam",
+    "storyIds": [
+      "ZX04612BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-13",
+    "stageTitle": "Her Footsteps",
+    "storyIds": [
+      "ZX04613BA",
+      "ZX04613EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-14",
+    "stageTitle": "Internal Conflict",
+    "storyIds": [
+      "ZX04614BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-15",
+    "stageTitle": "Beacon in the Mist",
+    "storyIds": [
+      "ZX04615BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-16",
+    "stageTitle": "Her Resolve",
+    "storyIds": [
+      "ZX04616BA",
+      "ZX04616EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14008,
+    "chapterTitle": "ER07 Soaring Beyond",
+    "stageNum": "ER07-17",
+    "stageTitle": "Buried Among Stars",
+    "storyIds": [
+      "ZX04617BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-1",
+    "stageTitle": "Scout",
+    "storyIds": [
+      "ZX04701BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-2",
+    "stageTitle": "Shade",
+    "storyIds": [
+      "ZX04702BA",
+      "ZX04702EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-3",
+    "stageTitle": "Correction",
+    "storyIds": [
+      "ZX04703BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-4",
+    "stageTitle": "Fledgling",
+    "storyIds": [
+      "ZX04704BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-5",
+    "stageTitle": "Dreamer",
+    "storyIds": [
+      "ZX04705BA",
+      "ZX04705EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-6",
+    "stageTitle": "Popular Literature",
+    "storyIds": [
+      "ZX04706BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-7",
+    "stageTitle": "Swap Futures",
+    "storyIds": [
+      "ZX04707BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-8",
+    "stageTitle": "What Is Salvation?",
+    "storyIds": [
+      "ZX04708BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-9",
+    "stageTitle": "Colorful Farce",
+    "storyIds": [
+      "ZX04709BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-10",
+    "stageTitle": "Renegade",
+    "storyIds": [
+      "ZX04710BA",
+      "ZX04710EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-11",
+    "stageTitle": "Crumbling Silence",
+    "storyIds": [
+      "ZX04711BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-12",
+    "stageTitle": "Keeping Demons",
+    "storyIds": [
+      "ZX04712BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-13",
+    "stageTitle": "Toys and Kaleidoscopes",
+    "storyIds": [
+      "ZX04713EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-14",
+    "stageTitle": "Backtrack",
+    "storyIds": [
+      "ZX04714BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-15",
+    "stageTitle": "Obscured",
+    "storyIds": [
+      "ZX04715EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-16",
+    "stageTitle": "Refutation",
+    "storyIds": [
+      "ZX04716BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-17",
+    "stageTitle": "Silent Night",
+    "storyIds": [
+      "ZX04717BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-18",
+    "stageTitle": "Meds and Deceit",
+    "storyIds": [
+      "ZX04718BA",
+      "ZX04718EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-19",
+    "stageTitle": "Before the Dawn",
+    "storyIds": [
+      "ZX04719BA",
+      "ZX04719EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-20",
+    "stageTitle": "The Long Goodbye",
+    "storyIds": [
+      "ZX04720BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-21",
+    "stageTitle": "Lucid Dreamer",
+    "storyIds": [
+      "ZX04721BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-22",
+    "stageTitle": "Mint",
+    "storyIds": [
+      "ZX04722BA",
+      "ZX04722EA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-23",
+    "stageTitle": "Infant",
+    "storyIds": [
+      "ZX04723BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-24",
+    "stageTitle": "The Present and Essence",
+    "storyIds": [
+      "ZX04724BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-25",
+    "stageTitle": "EX - Birthday",
+    "storyIds": [
+      "ZX04725BA"
+    ]
+  },
+  {
+    "category": "14",
+    "chapterId": 14009,
+    "chapterTitle": "ER08 The Long Goodbye",
+    "stageNum": "ER08-26",
+    "stageTitle": "EX - This Journey",
+    "storyIds": [
+      "ZX04726BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-27",
+    "stageTitle": "\"Moses\"",
+    "storyIds": [
+      "YC06801BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-28",
+    "stageTitle": "\"Symbiotic Siren\"",
+    "storyIds": [
+      "YC06802BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-29",
+    "stageTitle": "\"Netherweb\"",
+    "storyIds": [
+      "YC06803BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-30",
+    "stageTitle": "\"CPU0\"",
+    "storyIds": [
+      "YC06804BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-31",
+    "stageTitle": "\"Abyss Passer\"",
+    "storyIds": [
+      "YC06805BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2017,
+    "chapterTitle": "17 Steering By Light",
+    "stageNum": "42-32",
+    "stageTitle": "Millennium Project",
+    "storyIds": [
+      "YC06806BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-1",
+    "stageTitle": "HelloWorld",
+    "storyIds": [
+      "ZX01301BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-2",
+    "stageTitle": "Summer Beach Fun",
+    "storyIds": [
+      "ZX01302BA",
+      "ZX01302EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-3",
+    "stageTitle": "Chat about the Future",
+    "storyIds": [
+      "ZX01303BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-4",
+    "stageTitle": "Cat and Mouse - Fake",
+    "storyIds": [
+      "ZX01304BA",
+      "ZX01304EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-5",
+    "stageTitle": "Transcendant",
+    "storyIds": [
+      "ZX01305BA",
+      "ZX01305EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-6",
+    "stageTitle": "Uncontrolled Reality",
+    "storyIds": [
+      "ZX01306BA",
+      "ZX01306EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-7",
+    "stageTitle": "Into the Abyss",
+    "storyIds": [
+      "ZX01307BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-8",
+    "stageTitle": "Searing",
+    "storyIds": [
+      "ZX01308BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-9",
+    "stageTitle": "It&#39;s Gonna Work",
+    "storyIds": [
+      "ZX01309BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-10",
+    "stageTitle": "System Warnings",
+    "storyIds": [
+      "ZX01310BA",
+      "ZX01310EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-11",
+    "stageTitle": "Ant Venom",
+    "storyIds": [
+      "ZX01311BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-12",
+    "stageTitle": "Scientific Solutions",
+    "storyIds": [
+      "ZX01312EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-13",
+    "stageTitle": "Dead End",
+    "storyIds": [
+      "ZX01313BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-14",
+    "stageTitle": "Countdown",
+    "storyIds": [
+      "ZX01314BA",
+      "ZX01314EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-15",
+    "stageTitle": "Bloody Confession",
+    "storyIds": [
+      "ZX01315BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-16",
+    "stageTitle": "M.A.D",
+    "storyIds": [
+      "ZX01316BA",
+      "ZX01316EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-17",
+    "stageTitle": "The End of Childhood",
+    "storyIds": [
+      "ZX01317BA",
+      "ZX01317EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-18",
+    "stageTitle": "Rose Stem",
+    "storyIds": [
+      "ZX01318BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-19",
+    "stageTitle": "Your Life Story",
+    "storyIds": [
+      "ZX01319BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "EX01-20",
+    "stageTitle": "The Necessary Black Sheep",
+    "storyIds": [
+      "ZX01320BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "Stranded-01",
+    "stageTitle": "Prepare for Winter",
+    "storyIds": [
+      "YR01301BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8001,
+    "chapterTitle": "EX01 Grand Blue",
+    "stageNum": "Stranded-02",
+    "stageTitle": "Statue",
+    "storyIds": [
+      "YR01302BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-1",
+    "stageTitle": "Arctic Reunion",
+    "storyIds": [
+      "ZX01401BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-2",
+    "stageTitle": "Reinforcements",
+    "storyIds": [
+      "ZX01402BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-3",
+    "stageTitle": "Captain and Tide",
+    "storyIds": [
+      "ZX01403BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-4",
+    "stageTitle": "Snowy Skirmish",
+    "storyIds": [
+      "ZX01404BA",
+      "ZX01404EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-5",
+    "stageTitle": "Speedster",
+    "storyIds": [
+      "ZX01405BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-6",
+    "stageTitle": "United Nightmare",
+    "storyIds": [
+      "ZX01406BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-7",
+    "stageTitle": "The Past",
+    "storyIds": [
+      "ZX01407BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-8",
+    "stageTitle": "Research Building",
+    "storyIds": [
+      "ZX01408BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-9",
+    "stageTitle": "Codes",
+    "storyIds": [
+      "ZX01409BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-10",
+    "stageTitle": "Inver-Narwhal",
+    "storyIds": [
+      "ZX01410BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-11",
+    "stageTitle": "Blood Trail",
+    "storyIds": [
+      "ZX01411BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-12",
+    "stageTitle": "Frozen Battlefield",
+    "storyIds": [
+      "ZX01412BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-13",
+    "stageTitle": "Ice Venture",
+    "storyIds": [
+      "ZX01413BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-14",
+    "stageTitle": "Another Battlefield",
+    "storyIds": [
+      "ZX01414BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-15",
+    "stageTitle": "Amberia",
+    "storyIds": [
+      "ZX01415BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-16",
+    "stageTitle": "The Unlucky",
+    "storyIds": [
+      "ZX01416BA",
+      "ZX01416EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-17",
+    "stageTitle": "Farewell to Nightmare",
+    "storyIds": [
+      "ZX01417BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "EX02-18",
+    "stageTitle": "We Lucky Few",
+    "storyIds": [
+      "ZX01418BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "Snow Tracks-01",
+    "stageTitle": "On snow",
+    "storyIds": [
+      "YR01401BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "Snow Tracks-02",
+    "stageTitle": "Test Subject Rosetta",
+    "storyIds": [
+      "YR01402BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8002,
+    "chapterTitle": "EX02 Firn Night",
+    "stageNum": "Snow Tracks-03",
+    "stageTitle": "Depart",
+    "storyIds": [
+      "YR01403BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "Theater Ruins-01",
+    "stageTitle": "Black Guardian",
+    "storyIds": [
+      "YR01501BA",
+      "YR01501EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "Theater Ruins-02",
+    "stageTitle": "Requiem",
+    "storyIds": [
+      "YR01502BA",
+      "YR01502EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-1",
+    "stageTitle": "Dusty Memory",
+    "storyIds": [
+      "ZX01501BA",
+      "ZX01501EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-2",
+    "stageTitle": "Theater Crisis",
+    "storyIds": [
+      "ZX01502BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-3",
+    "stageTitle": "Against the Current",
+    "storyIds": [
+      "ZX01503BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-4",
+    "stageTitle": "Changing Tide",
+    "storyIds": [
+      "ZX01504BA",
+      "ZX01504EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-5",
+    "stageTitle": "Reunion",
+    "storyIds": [
+      "ZX01505BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-6",
+    "stageTitle": "Battle of Changban",
+    "storyIds": [
+      "ZX01506BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-7",
+    "stageTitle": "Disconnected",
+    "storyIds": [
+      "ZX01507BA",
+      "ZX01507EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-8",
+    "stageTitle": "Answer",
+    "storyIds": [
+      "ZX01508BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-9",
+    "stageTitle": "Before the Storm",
+    "storyIds": [
+      "ZX01509BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-10",
+    "stageTitle": "Will of Kowloong",
+    "storyIds": [
+      "ZX01510BA",
+      "ZX01510EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-11",
+    "stageTitle": "Legacy",
+    "storyIds": [
+      "ZX01511BA",
+      "ZX01511EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-12",
+    "stageTitle": "Homecoming",
+    "storyIds": [
+      "ZX01512BA",
+      "ZX01512EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-13",
+    "stageTitle": "Tabula Akasha",
+    "storyIds": [
+      "ZX01513BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-14",
+    "stageTitle": "Unnamed War",
+    "storyIds": [
+      "ZX01514BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-15",
+    "stageTitle": "Unexpected Encounter",
+    "storyIds": [
+      "ZX01515BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-16",
+    "stageTitle": "Area of Defense",
+    "storyIds": [
+      "ZX01516BA",
+      "ZX01516EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-17",
+    "stageTitle": "Little Promise",
+    "storyIds": [
+      "ZX01517BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-18",
+    "stageTitle": "Duty of Tai&#39;E",
+    "storyIds": [
+      "ZX01518BA",
+      "ZX01518EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8003,
+    "chapterTitle": "EX03 Lost Chapter",
+    "stageNum": "EX03-19",
+    "stageTitle": "Farewell",
+    "storyIds": [
+      "ZX01519BA",
+      "ZX01519EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-1",
+    "stageTitle": "Operation Red Tide",
+    "storyIds": [
+      "ZX01801BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-2",
+    "stageTitle": "Lone Hawk",
+    "storyIds": [
+      "ZX01802BA",
+      "ZX01802EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-3",
+    "stageTitle": "Land for No \"Man\"",
+    "storyIds": [
+      "ZX01803BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-4",
+    "stageTitle": "Abyss of Gravity",
+    "storyIds": [
+      "ZX01804BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-5",
+    "stageTitle": "Never Ending",
+    "storyIds": [
+      "ZX01805BA",
+      "ZX01805EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-6",
+    "stageTitle": "Ashes to Ashes",
+    "storyIds": [
+      "ZX01806BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-7",
+    "stageTitle": "Reason to Fight",
+    "storyIds": [
+      "ZX01807BA",
+      "ZX01807EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-8",
+    "stageTitle": "Voice of Yesterday",
+    "storyIds": [
+      "ZX01808BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-9",
+    "stageTitle": "Whalesong",
+    "storyIds": [
+      "ZX01809BA",
+      "ZX01809EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-10",
+    "stageTitle": "Siren",
+    "storyIds": [
+      "ZX01810BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-11",
+    "stageTitle": "Requiem",
+    "storyIds": [
+      "ZX01811BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-12",
+    "stageTitle": "Cradle of Immortality",
+    "storyIds": [
+      "ZX01812BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-13",
+    "stageTitle": "Silent Battlefield",
+    "storyIds": [
+      "ZX01813BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-14",
+    "stageTitle": "Gear?",
+    "storyIds": [
+      "ZX01814BA",
+      "ZX01814EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-15",
+    "stageTitle": "Gamble",
+    "storyIds": [
+      "ZX01815BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-16",
+    "stageTitle": "Awaken",
+    "storyIds": [
+      "ZX01816BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-17",
+    "stageTitle": "Echoes of the Past",
+    "storyIds": [
+      "ZX01817BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-18",
+    "stageTitle": "Encounter",
+    "storyIds": [
+      "ZX01818BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-19",
+    "stageTitle": "Frog in the Well",
+    "storyIds": [
+      "ZX01819BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8004,
+    "chapterTitle": "EX04 Echo Aria",
+    "stageNum": "EX04-20",
+    "stageTitle": "Journey&#39;s End",
+    "storyIds": [
+      "ZX01820BA",
+      "ZX01820EA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-24",
+    "stageTitle": "Temporary Joint Operation",
+    "storyIds": [
+      "YC06901BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-25",
+    "stageTitle": "The Past",
+    "storyIds": [
+      "YC06902BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-26",
+    "stageTitle": "Beneath the Ashes",
+    "storyIds": [
+      "YC06903BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-27",
+    "stageTitle": "Hunting Through the Flames",
+    "storyIds": [
+      "YC06904BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-28",
+    "stageTitle": "Amazigh",
+    "storyIds": [
+      "YC06905BA"
+    ]
+  },
+  {
+    "category": "2",
+    "chapterId": 2018,
+    "chapterTitle": "18 Anchored in Faith",
+    "stageNum": "43-29",
+    "stageTitle": "No Easy Answer",
+    "storyIds": [
+      "YC06906BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-1",
+    "stageTitle": "The Forgotten Children",
+    "storyIds": [
+      "ZX02001BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-2",
+    "stageTitle": "Suspiria",
+    "storyIds": [
+      "ZX02002BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-3",
+    "stageTitle": "The Mist",
+    "storyIds": [
+      "ZX02003BA",
+      "ZX02003EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-4",
+    "stageTitle": "Kairo",
+    "storyIds": [
+      "ZX02004BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-5",
+    "stageTitle": "Let the Right One In",
+    "storyIds": [
+      "ZX02005BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-6",
+    "stageTitle": "Insidious",
+    "storyIds": [
+      "ZX02006BA",
+      "ZX02006EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-7",
+    "stageTitle": "Cabin in the Woods",
+    "storyIds": [
+      "ZX02007BA",
+      "ZX02007EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-8",
+    "stageTitle": "The Skeleton Key",
+    "storyIds": [
+      "ZX02008BA",
+      "ZX02008EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-9",
+    "stageTitle": "The Thirteenth Floor",
+    "storyIds": [
+      "ZX02009BA",
+      "ZX02009EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-10",
+    "stageTitle": "Hour of the Wolf",
+    "storyIds": [
+      "ZX02010BA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-11",
+    "stageTitle": "The Chasers",
+    "storyIds": [
+      "ZX02011BA",
+      "ZX02011EA"
+    ]
+  },
+  {
+    "category": "6",
+    "chapterId": 8005,
+    "chapterTitle": "EX05 Inscription of Labyrinth",
+    "stageNum": "EX05-12",
+    "stageTitle": "Sixth Sense",
+    "storyIds": [
+      "ZX02012BA"
     ]
   }
 ]
