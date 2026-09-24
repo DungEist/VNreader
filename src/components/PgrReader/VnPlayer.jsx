@@ -756,7 +756,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
         }
       }
       else if (node.Type === 202 || node.Type === 212) {
-        const slotsToClear = [params[1], params[2], params[3]].filter(Boolean);
+        const slotsToClear = [params[1], params[2], params[3], params[4], params[5]].filter(Boolean);
         slotsToClear.forEach(id => {
           currentSlots[id] = null;
         });
@@ -936,7 +936,7 @@ export default function VnPlayer({ storyId, onBack, onNextStory, initialLang }) 
       }
     }
     else if (node.Type === 202 || node.Type === 212) {
-      const slotsToClear = [params[1], params[2], params[3]].filter(Boolean);
+      const slotsToClear = [params[1], params[2], params[3], params[4], params[5]].filter(Boolean);
       setSlots(prev => {
         const next = { ...prev };
         slotsToClear.forEach(id => {
