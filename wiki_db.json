@@ -34654,5 +34654,247 @@
     "storyIds": [
       "ZX02012BA"
     ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis I",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16901BA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis II",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16902BA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis III",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16903BA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis IV",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16904BA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis V",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16905BA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis VI",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16906BA",
+      "HG16906EA"
+    ]
+  },
+  {
+    "category": "1000",
+    "chapterId": 1421003,
+    "chapterTitle": "Adelyde: Anabasis",
+    "stageNum": "Adelyde: Anabasis VII",
+    "stageTitle": "",
+    "storyIds": [
+      "HG16907BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-36",
+    "stageTitle": "Elegy of the Misty Alley",
+    "storyIds": [
+      "RG02001BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-37",
+    "stageTitle": "Clue Board",
+    "storyIds": [
+      "RG02002BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-38",
+    "stageTitle": "Banquet Trial",
+    "storyIds": [
+      "RG02003BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-39",
+    "stageTitle": "Dance Floor Chaos",
+    "storyIds": [
+      "RG02004BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-40",
+    "stageTitle": "Chamber Secrets",
+    "storyIds": [
+      "RG02005BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-41",
+    "stageTitle": "Family Rites",
+    "storyIds": [
+      "RG02006BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-42",
+    "stageTitle": "Deep in the Mist",
+    "storyIds": [
+      "RG02007BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-43",
+    "stageTitle": "Cursed Visage",
+    "storyIds": [
+      "RG02008BA"
+    ]
+  },
+  {
+    "category": "17",
+    "chapterId": 17002,
+    "chapterTitle": "Shrouded Requiem",
+    "stageNum": "SR-44",
+    "stageTitle": "White Blossom",
+    "storyIds": [
+      "RG02009BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-1",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07001BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-2",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07002BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-3",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07003BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-4",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07004BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-5",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07005BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-6",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07006BA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-7",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07007BA",
+      "ZX07007EA"
+    ]
+  },
+  {
+    "category": "1",
+    "chapterId": 1044,
+    "chapterTitle": "44 (Upcoming)",
+    "stageNum": "44-8",
+    "stageTitle": "",
+    "storyIds": [
+      "ZX07008BA"
+    ]
   }
 ]
