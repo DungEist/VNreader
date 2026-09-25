@@ -2070,5 +2070,33 @@
     "name": "Karenina: Effulgence",
     "background": "image/rolecharacter/roleheadr5kalienina1",
     "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr5kalienina1.webp"
+  },
+  "1_1043": {
+    "catId": 1,
+    "chapId": 1043,
+    "name": "43 Anchored in Faith",
+    "background": "image/uifubenmaintabchapter/instanceiconpic43",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic43.webp"
+  },
+  "2_2018": {
+    "catId": 2,
+    "chapId": 2018,
+    "name": "18 Anchored in Faith",
+    "background": "image/uifubenmaintabchapter/instanceiconpic43",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic43.webp"
+  },
+  "1000_1421003": {
+    "catId": 1000,
+    "chapId": 1421003,
+    "name": "Adelyde: Anabasis",
+    "background": "image/rolecharacter/roleheadr3adelaide1",
+    "bgUrl": "/pgr_assets/product/texture/image/rolecharacter/roleheadr3adelaide1.webp"
+  },
+  "1_1044": {
+    "catId": 1,
+    "chapId": 1044,
+    "name": "44 (Upcoming)",
+    "background": "image/uifubenmaintabchapter/instanceiconpic43",
+    "bgUrl": "/pgr_assets/product/texture/image/uifubenmaintabchapter/instanceiconpic43.webp"
   }
 }
